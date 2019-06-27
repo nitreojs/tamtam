@@ -3,13 +3,13 @@ import * as Responses from '../typings/responses';
 import API from './api';
 
 declare class Bots {
-  constructor(api: API);
-
   private api: API;
 
-  getInfo(): Promise<Responses.IBotsGetInfoResponse>;
+  constructor(api: API);
 
-  editInfo(params: Params.IBotsEditInfoParams): Promise<Responses.IBotsEditInfoResponse>;
+  public getInfo(): Promise<Responses.IBotsGetInfoResponse>;
+
+  public editInfo(params: Params.IBotsEditInfoParams): Promise<Responses.IBotsEditInfoResponse>;
 }
 
 export = Bots;

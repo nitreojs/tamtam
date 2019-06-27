@@ -7,8 +7,8 @@ import ChainKeyboard from '../lib/chainkeyboard';
 declare class TamTam {
   constructor(params: Params.ITamTamParams);
 
-  api: API;
-  updates: Updates;
+  public api: API;
+  public updates: Updates;
 }
 
 export {

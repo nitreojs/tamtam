@@ -218,7 +218,7 @@ interface IMessageBody {
    * Message text
    */
   text?: string | null;
-  
+
   /**
    * Message attachments. Could be one of Attachment type. See description of this schema
    */
@@ -650,7 +650,7 @@ export interface IMessageCallbackContext {
    * Body of created message. Text + attachments. Could be null if message contains only forwarded message
    */
   body: IMessageBody;
-  
+
   /**
    * Timestamp
    */
@@ -760,7 +760,7 @@ export interface IUserRemovedContext {
    * Timestamp
    */
   timestamp: number;
-  
+
   /**
    * Chat identifier where event has occured
    */

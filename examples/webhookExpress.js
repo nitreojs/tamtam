@@ -9,7 +9,7 @@ let tamtam = new TamTam({
 
 /**
  * You should subscribe to webhook updates!
- * 
+ *
  * Check [this page](https://dev.tamtam.chat/#operation/subscribe)
  * to subscribe to updates or
  * use API method.
@@ -28,4 +28,5 @@ tamtam.updates.on('message_created', async (ctx) => {
   ctx.send('Check this out! I\'m working!');
 });
 
+// eslint-disable-next-line no-console
 console.log('Bot started.');

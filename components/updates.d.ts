@@ -21,7 +21,7 @@ type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Pr
 
 /**
  * Updates
- * 
+ *
  * Code provided by @negezor
  */
 declare class Updates {
@@ -30,49 +30,49 @@ declare class Updates {
   /**
    * Returns webhook callback like http[s] or express
    */
-  getWebhookCallback(): WebhookCallback;
+  public getWebhookCallback(): WebhookCallback;
 
   /**
    * Add middleware
    */
-  use(...middlewares: Array<Handler>): this;
+  public use(...middlewares: Array<Handler>): this;
 
   /**
    * Start polling
    */
-  startPolling(callback?: () => void): Promise<any>;
+  public startPolling(callback?: () => void): Promise<void>;
 
   /**
    * A handler that is called when handlers are not found
    */
-  setHearFallbackHandler(handler: Handler): this;
+  public setHearFallbackHandler(handler: Handler): this;
 
   /**
    * Subscribe to events
    */
-  on(events: 'message_callback', handler: Handler<IMessageCallbackContext>): this;
+  public on(events: 'message_callback', handler: Handler<IMessageCallbackContext>): this;
 
-  on(events: 'message_created', handler: Handler<IMessageCreatedContext>): this;
+  public on(events: 'message_created', handler: Handler<IMessageCreatedContext>): this;
 
-  on(events: 'message_edited', handler: Handler<IMessageEditedContext>): this;
+  public on(events: 'message_edited', handler: Handler<IMessageEditedContext>): this;
 
-  on(events: 'message_removed', handler: Handler<IMessageRemovedContext>): this;
+  public on(events: 'message_removed', handler: Handler<IMessageRemovedContext>): this;
 
-  on(events: 'user_added', handler: Handler<IUserAddedContext>): this;
+  public on(events: 'user_added', handler: Handler<IUserAddedContext>): this;
 
-  on(events: 'user_removed', handler: Handler<IUserRemovedContext>): this;
+  public on(events: 'user_removed', handler: Handler<IUserRemovedContext>): this;
 
-  on(events: 'bot_started', handler: Handler<IBotStartedContext>): this;
+  public on(events: 'bot_started', handler: Handler<IBotStartedContext>): this;
 
-  on(events: 'bot_added', handler: Handler<IBotAddedContext>): this;
+  public on(events: 'bot_added', handler: Handler<IBotAddedContext>): this;
 
-  on(events: 'bot_removed', handler: Handler<IBotRemovedContext>): this;
+  public on(events: 'bot_removed', handler: Handler<IBotRemovedContext>): this;
 
-  on(events: 'chat_title_changed', handler: Handler<IChatTitleChangedContext>): this;
+  public on(events: 'chat_title_changed', handler: Handler<IChatTitleChangedContext>): this;
 
-  on(events: Array<Params.UpdateType> | Params.UpdateType, handler: Handler): this;
+  public on(events: Array<Params.UpdateType> | Params.UpdateType, handler: Handler): this;
 
-  stopPolling(): this;
+  public stopPolling(): this;
 }
 
 export = Updates;

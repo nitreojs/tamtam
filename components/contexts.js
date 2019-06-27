@@ -293,7 +293,7 @@ class MessageRemovedContext extends Context {
     let payloadToInspect = {
       messageId: this.payload.message_id,
       timestamp: this.payload.timestamp,
-    }
+    };
 
     let payload = inspect(payloadToInspect, { ...options, compact: false });
 

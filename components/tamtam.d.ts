@@ -3,10 +3,10 @@ import API from './api';
 import Updates from './updates';
 
 declare class TamTam {
-  constructor(params: Params.ITamTamParams);
+  public api: API;
+  public updates: Updates;
 
-  api: API;
-  updates: Updates;
+  constructor(params: Params.ITamTamParams);
 }
 
 export = TamTam;

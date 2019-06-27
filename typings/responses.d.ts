@@ -37,13 +37,13 @@ interface IChat {
 
   /**
    * Chat status. One of:
-   * 
+   *
    *  active: bot is active member of chat
-   * 
+   *
    *  removed: bot was kicked
-   * 
+   *
    *  left: bot intentionally left chat
-   * 
+   *
    *  closed: chat was closed
    */
   status: ChatStatus;
@@ -62,12 +62,12 @@ interface IChat {
    * Time of last event occured in chat
    */
   last_event_time: number;
-  
+
   /**
    * Number of people in chat. Always 2 for dialog chat type
    */
   participants_count: number;
-  
+
   /**
    * Identifier of chat owner. Visible only for chat admins
    */
@@ -146,7 +146,7 @@ interface ILinkMessage {
    * Message text
    */
   text?: string | null;
-  
+
   /**
    * Message attachments. Could be one of Attachment type. See description of this schema
    */

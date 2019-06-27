@@ -255,7 +255,7 @@ export interface IAPIRequestParams {
    * API method
    */
   method: string;
-  
+
   /**
    * HTTP method (e.g. POST)
    */
@@ -282,7 +282,7 @@ export interface IMessageCallbackContext {
    * Callback
    */
   callback: ICallback;
-  
+
   /**
    * Original message containing inline keyboard. Can be `null` in case it had been deleted by the moment a bot got this update.
    */

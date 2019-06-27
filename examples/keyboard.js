@@ -33,4 +33,5 @@ tamtam.updates.on('message_created', async (ctx) => {
 
 tamtam.updates.startPolling('message_created');
 
+// eslint-disable-next-line no-console
 console.log('Bot started');

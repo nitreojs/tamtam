@@ -33,7 +33,7 @@ class API {
 
     let url = `https://botapi.tamtam.chat/${method}`;
 
-    if (method === 'chats' && query.hasOwnProperty('chat_id')) {
+    if (method === 'chats' && 'chat_id' in query) {
       url += `/${query.chat_id}${query.method ? '/' + query.method : ''}`;
     }
 

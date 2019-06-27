@@ -5,27 +5,27 @@ import API from './api';
 type Action = 'typing_on' | 'typing_off' | 'sending_photo' | 'sending_video' | 'sending_audio' | 'mark_seen';
 
 declare class Chats {
-  constructor(api: API);
-
   private api: API;
 
-  get(chatId: number): Promise<Responses.IChatsGetResponse>;
+  constructor(api: API);
 
-  edit(chatId: number, params?: Params.IChatsEditParams): Promise<Responses.IChatsEditResponse>;
+  public get(chatId: number): Promise<Responses.IChatsGetResponse>;
 
-  getChats(params?: Params.IChatsGetChatsParams): Promise<Responses.IChatsGetChatsResponse>;
+  public edit(chatId: number, params?: Params.IChatsEditParams): Promise<Responses.IChatsEditResponse>;
 
-  sendAction(chatId: number, action: Action): Promise<Responses.IChatsSendActionResponse>;
+  public getChats(params?: Params.IChatsGetChatsParams): Promise<Responses.IChatsGetChatsResponse>;
 
-  getChatMembership(chatId: number): Promise<Responses.IChatsGetChatMembershipResponse>;
+  public sendAction(chatId: number, action: Action): Promise<Responses.IChatsSendActionResponse>;
 
-  leave(chatId: number): Promise<Responses.IChatsLeaveResponse>;
+  public getChatMembership(chatId: number): Promise<Responses.IChatsGetChatMembershipResponse>;
 
-  getMembers(chatId: number, params?: Params.IChatsGetMembersParams): Promise<Responses.IChatsGetMembersResponse>;
+  public leave(chatId: number): Promise<Responses.IChatsLeaveResponse>;
 
-  addMembers(chatId: number, userIds: Array<number> | number): Promise<Responses.IChatsAddMembersResponse>;
+  public getMembers(chatId: number, params?: Params.IChatsGetMembersParams): Promise<Responses.IChatsGetMembersResponse>;
 
-  removeMember(chatId: number, userId: number): Promise<Responses.IChatsRemoveMemberResponse>;
+  public addMembers(chatId: number, userIds: Array<number> | number): Promise<Responses.IChatsAddMembersResponse>;
+
+  public removeMember(chatId: number, userId: number): Promise<Responses.IChatsRemoveMemberResponse>;
 }
 
 export = Chats;

@@ -3,15 +3,15 @@ import * as Responses from '../typings/responses';
 import API from './api';
 
 export default class Subscriptions {
-  constructor(api: API);
-
   private api: API;
 
-  get(): Promise<Responses.ISubscriptionsGetResponse>;
+  constructor(api: API);
 
-  subscribe(url: string, params?: Params.ISubscriptionsSubscribeParams): Promise<Responses.ISubscriptionsSubscribeResponse>;
+  public get(): Promise<Responses.ISubscriptionsGetResponse>;
 
-  unsubscribe(url: string): Promise<Responses.ISubscriptionsUnsubscribeResponse>;
+  public subscribe(url: string, params?: Params.ISubscriptionsSubscribeParams): Promise<Responses.ISubscriptionsSubscribeResponse>;
 
-  getUpdates(params?: Params.ISubscriptionsGetUpdatesParams): Promise<Responses.ISubscriptionsGetUpdatesResponse>;
+  public unsubscribe(url: string): Promise<Responses.ISubscriptionsUnsubscribeResponse>;
+
+  public getUpdates(params?: Params.ISubscriptionsGetUpdatesParams): Promise<Responses.ISubscriptionsGetUpdatesResponse>;
 }

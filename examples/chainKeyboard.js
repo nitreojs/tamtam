@@ -12,13 +12,10 @@ tamtam.updates.on('message_created', async (ctx) => {
       attachments: chainKeyboard.callbackButton({
         text: 'Blue (positive) button',
         intent: ChainKeyboard.POSITIVE_COLOR,
-      })
-      .callbackButton({
+      }).callbackButton({
         text: 'Red (negative) button',
         intent: ChainKeyboard.NEGATIVE_COLOR,
-      })
-      .row()
-      .linkButton({
+      }).row().linkButton({
         text: 'Gooooooogle!',
         url: 'google.com',
       }),
@@ -28,4 +25,5 @@ tamtam.updates.on('message_created', async (ctx) => {
 
 tamtam.updates.startPolling('message_created');
 
+// eslint-disable-next-line no-console
 console.log('Bot started');

@@ -9,17 +9,17 @@ import Upload from './upload';
  * API
  */
 declare class API {
+  public bots: Bots;
+  public chats: Chats;
+  public messages: Messages;
+  public subscriptions: Subscriptions;
+  public upload: Upload;
+
   constructor(tamtam: Params.ITamTamParams);
 
-  bots: Bots;
-  chats: Chats;
-  messages: Messages;
-  subscriptions: Subscriptions;
-  upload: Upload;
+  public request(params: Params.IAPIRequestParams): Promise<any>;
 
-  request(params: Params.IAPIRequestParams): Promise<any>;
-
-  call(method: string, params: Params.IAPICallParams): Promise<any>;
+  public call(method: string, params: Params.IAPICallParams): Promise<any>;
 }
 
 export = API;

@@ -3,17 +3,17 @@ import * as Responses from '../typings/responses';
 import API from './api';
 
 export default class Messages {
-  constructor(tamtam: API);
-
   private api: API;
 
-  get(params?: Params.IMessagesGetParams): Promise<Responses.IMessagesGetResponse>;
+  constructor(tamtam: API);
 
-  send(params: Params.IMessagesSendParams): Promise<Responses.IMessagesSendResponse>;
+  public get(params?: Params.IMessagesGetParams): Promise<Responses.IMessagesGetResponse>;
 
-  edit(messageId: string, params: Params.IMessagesEditParams): Promise<Responses.IMessagesEditResponse>;
+  public send(params: Params.IMessagesSendParams): Promise<Responses.IMessagesSendResponse>;
 
-  delete(messageId: number): Promise<Responses.IMessagesDeleteResponse>;
+  public edit(messageId: string, params: Params.IMessagesEditParams): Promise<Responses.IMessagesEditResponse>;
 
-  answerCallback(callbackId: number, params: Params.IMessagesAnswerCallbackParams): Promise<Responses.IMessagesAnswerCallbackResponse>;
+  public delete(messageId: number): Promise<Responses.IMessagesDeleteResponse>;
+
+  public answerCallback(callbackId: number, params: Params.IMessagesAnswerCallbackParams): Promise<Responses.IMessagesAnswerCallbackResponse>;
 }
