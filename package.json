@@ -1,0 +1,35 @@
+{
+  "name": "tamtam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitreojs/tamtam.git"
+  },
+  "keywords": [
+    "tamtam",
+    "api"
+  ],
+  "files": [
+    "lib",
+    "typings",
+    "components"
+  ],
+  "author": "nitrojs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nitreojs/tamtam/issues"
+  },
+  "homepage": "https://github.com/nitreojs/tamtam#readme",
+  "types": "typings/index.d.ts",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "middleware-io": "^2.0.0",
+    "node-fetch": "^2.6.0",
+    "querystring": "^0.2.0"
+  }
+}
