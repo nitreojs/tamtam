@@ -1,6 +1,6 @@
-import API from "./api";
 import * as Params from "../typings/params";
 import * as Responses from "../typings/responses";
+import API from "./api";
 
 export default class Messages {
   private api: API;
@@ -15,5 +15,7 @@ export default class Messages {
 
   public delete(messageId: number): Promise<Responses.IMessagesDeleteResponse>;
 
-  public answerCallback(callbackId: number, params: Params.IMessagesAnswerCallbackParams): Promise<Responses.IMessagesAnswerCallbackResponse>;
+  public answerCallback(callbackId: number, params: Params.IMessagesAnswerCallbackParams): Promise<
+    Responses.IMessagesAnswerCallbackResponse
+  >;
 }

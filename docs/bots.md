@@ -4,7 +4,7 @@
 tamtam.api.bots;
 ```
 
-# Methods
+## Methods
 
 ### getInfo
 

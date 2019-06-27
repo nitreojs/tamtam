@@ -4,7 +4,7 @@
 tamtam.api.chats;
 ```
 
-# Methods
+## Methods
 
 ### get
 
@@ -73,7 +73,8 @@ tamtam.api.chats.leave(chatId: number); // => Promise<IChatsLeaveResponse>
 Returns users participated in chat
 
 ```js
-tamtam.api.chats.getMembers(chatId: number, params?: IChatsGetMembersParams); // => Promise<IChatsGetMembersResponse>
+tamtam.api.chats.getMembers(chatId: number, params?: IChatsGetMembersParams);
+// => Promise<IChatsGetMembersResponse>
 ```
 
 IChatsGetMembersParams:
@@ -89,7 +90,8 @@ IChatsGetMembersParams:
 Adds members to chat. Additional permissions may require
 
 ```js
-tamtam.api.chats.addMembers(chatId: number, userIds: Array<number> | number); // => Promise<IChatsAddMembersResponse>
+tamtam.api.chats.addMembers(chatId: number, userIds: Array<number> | number);
+// => Promise<IChatsAddMembersResponse>
 ```
 
 ### removeMember

@@ -1,30 +1,30 @@
 <p align="center"><img src="tamtam.png"></p>
 
 <p align="center">
-<img alt="npm" src="https://img.shields.io/npm/v/tamtam.svg?style=for-the-badge">
-<img alt="size" src="https://img.shields.io/bundlephobia/min/tamtam.svg?style=for-the-badge">
-<img alt="downloads" src="https://img.shields.io/npm/dt/tamtam.svg?style=for-the-badge">
+  <img alt="npm" src="https://img.shields.io/npm/v/tamtam.svg?style=for-the-badge">
+  <img alt="size" src="https://img.shields.io/bundlephobia/min/tamtam.svg?style=for-the-badge">
+  <img alt="downloads" src="https://img.shields.io/npm/dt/tamtam.svg?style=for-the-badge">
 </p>
 
 # tamtam
 
 tamtam is a powerful Node.js package which allows you to easily work with [TamTam](https://tt.me) [API](https://dev.tamtam.chat)!
 
-# Installation
+## Installation
 
-## Yarn
+### Yarn
 
 ```bash
 yarn add tamtam
 ```
 
-## NPM
+### NPM
 
 ```bash
 npm i tamtam -S
 ```
 
-# Example usage
+## Example usage
 
 ```js
 let { TamTam } = require('tamtam');
@@ -43,6 +43,6 @@ tamtam.api.messages.send({
 
 More examples you can see [here](examples/README.md).
 
-# API
+## API
 
 API review you can find [here](docs/README.md).

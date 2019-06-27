@@ -1,14 +1,14 @@
-import * as Params from "../typings/params";
 import {
-  IButton,
+  Button,
   IButtonCallback,
   IButtonLink,
   IButtonRequestContact,
   IButtonRequestGeoLocation,
 } from "../typings/interfaces";
+import * as Params from "../typings/params";
 
 interface IKeyboardKeyboardPayload {
-  buttons: Array<IButton>;
+  buttons: Array<Button>;
 }
 
 interface IKeyboardKeyboardResponse {
@@ -21,42 +21,42 @@ declare class Keyboard {
   /**
    * Positive color
    */
-  static POSITIVE_COLOR: "positive";
+  public static POSITIVE_COLOR: "positive";
 
   /**
    * Negative color
    */
-  static NEGATIVE_COLOR: "negative";
+  public static NEGATIVE_COLOR: "negative";
 
   /**
    * Default color
    */
-  static DEFAULT_COLOR: "default";
+  public static DEFAULT_COLOR: "default";
 
   /**
    * Generate keyboard
    */
-  static keyboard(rows: Array<Array<IButton>>): Array<IKeyboardKeyboardResponse>;
+  public static keyboard(rows: Array<Array<Button>>): Array<IKeyboardKeyboardResponse>;
 
   /**
    * Generate callback button
    */
-  static callbackButton(params: Params.IKeyboardCallbackButtonParams): IButtonCallback;
+  public static callbackButton(params: Params.IKeyboardCallbackButtonParams): IButtonCallback;
 
   /**
    * Generate request geolocation button
    */
-  static geoButton(params: Params.IKeyboardGeoButtonParams): IButtonRequestGeoLocation;
+  public static geoButton(params: Params.IKeyboardGeoButtonParams): IButtonRequestGeoLocation;
 
   /**
    * Generate request contact button
    */
-  static contactButton(params: Params.IKeyboardContactButtonParams): IButtonRequestContact;
+  public static contactButton(params: Params.IKeyboardContactButtonParams): IButtonRequestContact;
 
   /**
    * Generate link button
    */
-  static linkButton(params: Params.IKeyboardLinkButtonParams): IButtonLink;
+  public static linkButton(params: Params.IKeyboardLinkButtonParams): IButtonLink;
 }
 
 export = Keyboard;

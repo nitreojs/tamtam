@@ -2,71 +2,79 @@
 
 Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
-### Permission
+## Permission
 
-**Enum**: `read_all_messages`, `add_remove_members`, `add_admins`, `change_chat_info`, `pin_message` or `write`
+**Enum**: `read_all_messages`, `add_remove_members`, `add_admins`,
+`change_chat_info`, `pin_message` or `write`
 
-### ILink
+## ILink
 
 | Key  | Required | Type                    |
 | ---- | -------- | ----------------------- |
 | type | true     | [ILinkType](#ILinkType) |
 | mid  | true     | string                  |
 
-### ILinkType
+## ILinkType
 
 **Enum**: `forward` or `reply`
 
-### IBotCommand
+## IBotCommand
 
 | Key         | Required | Type   |
 | ----------- | -------- | ------ |
 | name        | true     | string |
 | description | false    | string |
 
-### IPhoto
+## IPhoto
 
-| Key    | Required | Type                      |
-| ------ | -------- | ------------------------- |
-| url    | false    | string                    |
-| token  | false    | string                    |
-| photos | false    | [PhotoToken](#PhotoToken) |
+| Key    | Required | Type                        |
+| ------ | -------- | --------------------------- |
+| url    | false    | string                      |
+| token  | false    | string                      |
+| photos | false    | [IPhotoToken](#IPhotoToken) |
 
-### PhotoToken
+## IPhotoToken
 
 | Key   | Required | Type   |
 | ----- | -------- | ------ |
 | token | true     | string |
 
-### Action
+## Action
 
-**Enum**: `typing_on`, `typing_off`, `sending_photo`, `sending_video`, `sending_audio` or `mark_seen`
+**Enum**: `typing_on`, `typing_off`, `sending_photo`, `sending_video`,
+`sending_audio` or `mark_seen`
 
-### IAttachment
+## Attachment
 
-**Enum**: [`IAttachmentAudio`](#IAttachmentAudio), [`IAttachmentContact`](#IAttachmentContact), [`IAttachmentFile`](#IAttachmentFile), [`IAttachmentImage`](#IAttachmentImage), [`IAttachmentInlineKeyboard`](#IAttachmentInlineKeyboard), [`IAttachmentSticker`](#IAttachmentSticker) or [`IAttachmentVideo`](#IAttachmentVideo) *(clickable)*
+**Enum**: [`IAttachmentAudio`](#IAttachmentAudio),
+[`IAttachmentContact`](#IAttachmentContact),
+[`IAttachmentFile`](#IAttachmentFile),
+[`IAttachmentImage`](#IAttachmentImage),
+[`IAttachmentInlineKeyboard`](#IAttachmentInlineKeyboard),
+[`IAttachmentSticker`](#IAttachmentSticker) or
+[`IAttachmentVideo`](#IAttachmentVideo) *(clickable)*
 
-### IAttachmentAudio
+## IAttachmentAudio
 
 | Key     | Required | Type                                                |
 | ------- | -------- | --------------------------------------------------- |
 | type    | true     | 'audio'                                             |
 | payload | true     | [IAttachmentAudioPayload](#IAttachmentAudioPayload) |
 
-### IAttachmentAudioPayload
+## IAttachmentAudioPayload
 
 | Key | Required | Type   |
 | --- | -------- | ------ |
 | id  | true     | number |
 
-### IAttachmentContact
+## IAttachmentContact
 
 | Key     | Required | Type                                                    |
 | ------- | -------- | ------------------------------------------------------- |
 | type    | true     | 'contact'                                               |
 | payload | true     | [IAttachmentContactPayload](#IAttachmentContactPayload) |
 
-### IAttachmentContactPayload
+## IAttachmentContactPayload
 
 | Key       | Required | Type   |
 | --------- | -------- | ------ |
@@ -75,70 +83,74 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | vcfInfo   | false    | string |
 | vcfPhone  | false    | string |
 
-### IAttachmentFile
+## IAttachmentFile
 
 | Key     | Required | Type                                              |
 | ------- | -------- | ------------------------------------------------- |
 | type    | true     | 'file'                                            |
 | payload | true     | [IAttachmentFilePayload](#IAttachmentFilePayload) |
 
-### IAttachmentFilePayload
+## IAttachmentFilePayload
 
 | Key    | Required | Type   |
 | ------ | -------- | ------ |
 | fileId | true     | number |
 
-### IAttachmentImage
+## IAttachmentImage
 
 | Key     | Required | Type              |
 | ------- | -------- | ----------------- |
 | type    | true     | 'image'           |
 | payload | true     | [IPhoto](#IPhoto) |
 
-### IAttachmentInlineKeyboard
+## IAttachmentInlineKeyboard
 
-| Key     | Required | Type                                                                  |
-| ------- | -------- | --------------------------------------------------------------------- |
-| type    | true     | 'inline_keyboard'                                                     |
-| payload | true     | [IAttachmentInlineKeyboardPayload](#IAttachmentInlineKeyboardPayload) |
+| Key     | Required | Type                                        |
+| ------- | -------- | ------------------------------------------- |
+| type    | true     | 'inline_keyboard'                           |
+| payload | true     | [IAttachmentInlineKeyboardPayload][payload] |
 
-### IAttachmentInlineKeyboardPayload
+[payload]: #IAttachmentInlineKeyboardPayload
 
-| Key     | Required | Type                                |
-| ------- | -------- | ----------------------------------- |
-| buttons | true     | Array\<Array\<[IButton](#IButton)>> |
+## IAttachmentInlineKeyboardPayload
 
-### IAttachmentSticker
+| Key     | Required | Type                              |
+| ------- | -------- | --------------------------------- |
+| buttons | true     | Array\<Array\<[Button](#Button)>> |
+
+## IAttachmentSticker
 
 | Key     | Required | Type                                                    |
 | ------- | -------- | ------------------------------------------------------- |
 | type    | true     | 'sticker'                                               |
 | payload | true     | [IAttachmentStickerPayload](#IAttachmentStickerPayload) |
 
-### IAttachmentStickerPayload
+## IAttachmentStickerPayload
 
 | Key  | Required | Type   |
 | ---- | -------- | ------ |
 | code | true     | string |
 
-### IAttachmentVideo
+## IAttachmentVideo
 
 | Key     | Required | Type                                                |
 | ------- | -------- | --------------------------------------------------- |
 | type    | true     | 'video'                                             |
 | payload | true     | [IAttachmentVideoPayload](#IAttachmentVideoPayload) |
 
-### IAttachmentVideoPayload
+## IAttachmentVideoPayload
 
 | Key | Required | Type   |
 | --- | -------- | ------ |
 | id  | true     | number |
 
-### IButton
+## Button
 
-**Enum**: [`IButtonCallback`](#IButtonCallback), [`IButtonLink`](#IButtonLink), [`IButtonRequestContact`](#IButtonRequestContact) or [`IButtonRequestGeoLocation`](#IButtonRequestGeoLocation) *(clickable)*
+**Enum**: [`IButtonCallback`](#IButtonCallback), [`IButtonLink`](#IButtonLink),
+[`IButtonRequestContact`](#IButtonRequestContact) or
+[`IButtonRequestGeoLocation`](#IButtonRequestGeoLocation) *(clickable)*
 
-### IButtonCallback
+## IButtonCallback
 
 | Key     | Required | Type                            |
 | ------- | -------- | ------------------------------- |
@@ -147,7 +159,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | payload | false    | string                          |
 | intent  | false    | [IButtonIntent](#IButtonIntent) |
 
-### IButtonLink
+## IButtonLink
 
 | Key  | Required | Type   |
 | ---- | -------- | ------ |
@@ -155,14 +167,14 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | text | true     | string |
 | url  | true     | string |
 
-### IButtonRequestContact
+## IButtonRequestContact
 
 | Key  | Required | Type              |
 | ---- | -------- | ----------------- |
 | type | true     | 'request_contact' |
 | text | true     | string            |
 
-### IButtonRequestGeoLocation
+## IButtonRequestGeoLocation
 
 | Key   | Required | Type                   |
 | ----- | -------- | ---------------------- |
@@ -170,50 +182,52 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | text  | true     | string                 |
 | quick | false    | boolean                |
 
-### IButtonIntent
+## IButtonIntent
 
 **Enum**: `positive`, `negative` or `default`
 
-### IParamsMessage
+## IParamsMessage
 
-| Key         | Required | Type                                |
-| ----------- | -------- | ----------------------------------- |
-| text        | false    | string                              |
-| attachments | false    | Array\<[IAttachment](#IAttachment)> |
-| link        | false    | ILink                               |
-| user_id     | false    | number                              |
-| chat_id     | false    | number                              |
-| notify      | false    | boolean                             |
+| Key         | Required | Type                              |
+| ----------- | -------- | --------------------------------- |
+| text        | false    | string                            |
+| attachments | false    | Array\<[Attachment](#Attachment)> |
+| link        | false    | ILink                             |
+| user_id     | false    | number                            |
+| chat_id     | false    | number                            |
+| notify      | false    | boolean                           |
 
-### UpdateType
+## UpdateType
 
-**Enum**: `message_callback`, `message_created`, `message_edited`, `message_removed`, `bot_added`, `bot_removed`, `user_added`, `user_removed`, `bot_started` or `chat_title_changed`
+**Enum**: `message_callback`, `message_created`, `message_edited`,
+`message_removed`, `bot_added`, `bot_removed`, `user_added`,
+`user_removed`, `bot_started` or `chat_title_changed`
 
-### Type
+## Type
 
 **Enum**: `photo`, `video`, `audio` or `file`
 
-### ChatType
+## ChatType
 
 **Enum**: `dialog`, `chat` or `channel`
 
-### ChatStatus
+## ChatStatus
 
 **Enum**: `active`, `removed`, `left`, `closed` or `suspended`
 
-### IIcon
+## IIcon
 
 | Key | Required | Type   |
 | --- | -------- | ------ |
 | url | true     | string |
 
-### IParticipants
+## IParticipants
 
 | Key           | Required | Type   |
 | ------------- | -------- | ------ |
 | [key: string] | true     | number |
 
-### IChat
+## IChat
 
 | Key                | Required | Type                            |
 | ------------------ | -------- | ------------------------------- |
@@ -230,13 +244,13 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | link               | false    | string                          |
 | description        | false    | any                             |
 
-### ISuccess
+## ISuccess
 
 | Key     | Required | Type    |
 | ------- | -------- | ------- |
 | success | true     | boolean |
 
-### IChatMember
+## IChatMember
 
 | Key             | Required | Type                              |
 | --------------- | -------- | --------------------------------- |
@@ -250,7 +264,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | join_time       | true     | boolean                           |
 | permissions     | false    | Array\<[Permission](#Permission)> |
 
-### IMessage
+## IMessage
 
 | Key       | Required | Type                                    |
 | --------- | -------- | --------------------------------------- |
@@ -261,7 +275,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | body      | true     | [IMessageBody](#IMessageBody)           |
 | stat      | false    | [IMessageStat](#IMessageStat)           |
 
-### IMessageSender
+## IMessageSender
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
@@ -269,7 +283,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | name     | true     | string |
 | username | false    | string |
 
-### IMessageRecipient
+## IMessageRecipient
 
 | Key      | Required | Type                  |
 | -------- | -------- | --------------------- |
@@ -277,26 +291,26 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | chatType | true     | [ChatType](#ChatType) |
 | userId   | false    | number                |
 
-### IMessageBody
+## IMessageBody
 
-| Key         | Required | Type                                |
-| ----------- | -------- | ----------------------------------- |
-| mid         | true     | string                              |
-| seq         | true     | number                              |
-| text        | false    | string                              |
-| attachments | false    | Array\<[IAttachment](#IAttachment)> |
+| Key         | Required | Type                              |
+| ----------- | -------- | --------------------------------- |
+| mid         | true     | string                            |
+| seq         | true     | number                            |
+| text        | false    | string                            |
+| attachments | false    | Array\<[Attachment](#Attachment)> |
 
-### IMessageStat
+## IMessageStat
 
 | Key   | Required | Type   |
 | ----- | -------- | ------ |
 | views | true     | number |
 
-### UploadType
+## UploadType
 
 **Enum**: `photo`, `video`, `audio` or `file`
 
-### ISubscription
+## ISubscription
 
 | Key          | Required | Type                              |
 | ------------ | -------- | --------------------------------- |
@@ -305,20 +319,31 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | update_types | false    | Array\<[UpdateType](#UpdateType)> |
 | version      | false    | string                            |
 
-### IUpdate
+## Update
 
-**Enum**: [`IUpdateMessageCallback`](#IUpdateMessageCallback), [`IUpdateMessageCreated`](#IUpdateMessageCreated), [`IUpdateMessageRemoved`](#IUpdateMessageRemoved), [`IUpdateMessageEdited`](#IUpdateMessageEdited), [`IUpdateBotAdded`](#IUpdateBotAdded), [`IUpdateBotRemoved`](#IUpdateBotRemoved), [`IUpdateUserAdded`](#IUpdateUserAdded), [`IUpdateUserRemoved`](#IUpdateUserRemoved), [`IUpdateBotStarted`](#IUpdateBotStarted) or [`IUpdateChatTitleChanged`](#IUpdateChatTitleChanged) *(clickable)*
+**Enum**: [`IUpdateMessageCallback`](#IUpdateMessageCallback),
+[`IUpdateMessageCreated`](#IUpdateMessageCreated),
+[`IUpdateMessageRemoved`](#IUpdateMessageRemoved),
+[`IUpdateMessageEdited`](#IUpdateMessageEdited),
+[`IUpdateBotAdded`](#IUpdateBotAdded),
+[`IUpdateBotRemoved`](#IUpdateBotRemoved),
+[`IUpdateUserAdded`](#IUpdateUserAdded),
+[`IUpdateUserRemoved`](#IUpdateUserRemoved),
+[`IUpdateBotStarted`](#IUpdateBotStarted) or
+[`IUpdateChatTitleChanged`](#IUpdateChatTitleChanged) *(clickable)*
 
-### IUpdateMessageCallback
+## IUpdateMessageCallback
 
-| Key         | Required | Type                                                              |
-| ----------- | -------- | ----------------------------------------------------------------- |
-| update_type | true     | 'message_callback'                                                |
-| timestamp   | true     | number                                                            |
-| callback    | true     | [IUpdateMessageCallbackCallback](#IUpdateMessageCallbackCallback) |
-| message     | false    | [IMessage](#IMessage)                                             |
+| Key         | Required | Type                                       |
+| ----------- | -------- | ------------------------------------------ |
+| update_type | true     | 'message_callback'                         |
+| timestamp   | true     | number                                     |
+| callback    | true     | [IUpdateMessageCallbackCallback][callback] |
+| message     | false    | [IMessage](#IMessage)                      |
 
-### IUpdateMessageCallbackCallback
+[callback]: #IUpdateMessageCallbackCallback
+
+## IUpdateMessageCallbackCallback
 
 | Key         | Required | Type                              |
 | ----------- | -------- | --------------------------------- |
@@ -327,7 +352,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | payload     | false    | string                            |
 | user        | true     | [IMessageSender](#IMessageSender) |
 
-### IUpdateMessageCreated
+## IUpdateMessageCreated
 
 | Key         | Required | Type                  |
 | ----------- | -------- | --------------------- |
@@ -335,7 +360,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | timestamp   | true     | number                |
 | message     | true     | [IMessage](#IMessage) |
 
-### IUpdateMessageRemoved
+## IUpdateMessageRemoved
 
 | Key         | Required | Type              |
 | ----------- | -------- | ----------------- |
@@ -343,7 +368,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | timestamp   | true     | number            |
 | message_id  | true     | string            |
 
-### IUpdateMessageEdited
+## IUpdateMessageEdited
 
 | Key         | Required | Type                  |
 | ----------- | -------- | --------------------- |
@@ -351,7 +376,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | timestamp   | true     | number                |
 | message     | true     | [IMessage](#IMessage) |
 
-### IUpdateBotAdded
+## IUpdateBotAdded
 
 | Key         | Required | Type        |
 | ----------- | -------- | ----------- |
@@ -360,7 +385,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | chat_id     | true     | number      |
 | user_id     | true     | number      |
 
-### IUpdateBotRemoved
+## IUpdateBotRemoved
 
 | Key         | Required | Type          |
 | ----------- | -------- | ------------- |
@@ -369,7 +394,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | chat_id     | true     | number        |
 | user_id     | true     | number        |
 
-### IUpdateUserAdded
+## IUpdateUserAdded
 
 | Key         | Required | Type         |
 | ----------- | -------- | ------------ |
@@ -379,7 +404,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | user_id     | true     | number       |
 | inviter_id  | true     | number       |
 
-### IUpdateUserRemoved
+## IUpdateUserRemoved
 
 | Key         | Required | Type           |
 | ----------- | -------- | -------------- |
@@ -389,7 +414,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | user_id     | true     | number         |
 | admin_id    | true     | number         |
 
-### IUpdateBotStarted
+## IUpdateBotStarted
 
 | Key         | Required | Type          |
 | ----------- | -------- | ------------- |
@@ -398,7 +423,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | chat_id     | true     | number        |
 | user_id     | true     | number        |
 
-### IUpdateChatTitleChanged
+## IUpdateChatTitleChanged
 
 | Key         | Required | Type                 |
 | ----------- | -------- | -------------------- |

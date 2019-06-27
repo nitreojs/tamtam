@@ -4,7 +4,7 @@
 tamtam.api.messages;
 ```
 
-# Methods
+## Methods
 
 ### get
 
@@ -38,14 +38,14 @@ tamtam.api.messages.send(params: IMessagesSendParams); // => IMessagesSendRespon
 
 IMessagesSendParams:
 
-| Key         | Required | Type                                                                            |
-| ----------- | -------- | ------------------------------------------------------------------------------- |
-| text        | false    | string                                                                          |
-| attachments | false    | Array\<[IAttachment](interfaces.md/#IAttachment)> |
-| link        | false    | ILink                                                                           |
-| user_id     | false    | number                                                                          |
-| chat_id     | false    | number                                                                          |
-| notify      | false    | boolean                                                                         |
+| Key         | Required | Type                                            |
+| ----------- | -------- | ----------------------------------------------- |
+| text        | false    | string                                          |
+| attachments | false    | Array\<[Attachment](interfaces.md/#Attachment)> |
+| link        | false    | ILink                                           |
+| user_id     | false    | number                                          |
+| chat_id     | false    | number                                          |
+| notify      | false    | boolean                                         |
 
 ### edit
 
@@ -60,14 +60,14 @@ tamtam.api.messages.edit(messageId: string, params: IMessagesEditParams); // => 
 
 IMessagesEditParams:
 
-| Key         | Required | Type                |
-| ----------- | -------- | ------------------- |
-| text        | false    | string              |
-| attachments | false    | Array\<[IAttachment](interfaces.md/#IAttachment)> |
-| link        | false    | ILink               |
-| user_id     | false    | number              |
-| chat_id     | false    | number              |
-| notify      | false    | boolean             |
+| Key         | Required | Type                                            |
+| ----------- | -------- | ----------------------------------------------- |
+| text        | false    | string                                          |
+| attachments | false    | Array\<[Attachment](interfaces.md/#Attachment)> |
+| link        | false    | ILink                                           |
+| user_id     | false    | number                                          |
+| chat_id     | false    | number                                          |
+| notify      | false    | boolean                                         |
 
 ### delete
 
@@ -80,7 +80,8 @@ tamtam.api.messages.delete(messageId: number); // => Promise<IMessagesDeleteResp
 ### answerCallback
 
 ```js
-tamtam.api.messages.answerCallback(callbackId: number, params: IMessagesAnswerCallbackParams); // => Promise<IMessagesAnswerCallbackResponse>;
+tamtam.api.messages.answerCallback(callbackId: number, params: IMessagesAnswerCallbackParams);
+// => Promise<IMessagesAnswerCallbackResponse>;
 ```
 
 IMessagesAnswerCallbackParams:

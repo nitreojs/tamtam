@@ -112,7 +112,7 @@ class MessageCallbackContext extends Context {
   }
 
   async sendNotification(text) {
-    return this[kTamTam].api.messages.answerCallback(this.payload.callback.callbackId, {
+    return this[kTamTam].api.messages.answerCallback(this.payload.callback.id, {
       user_id: this.payload.callback.user.userId,
       notification: text,
     });

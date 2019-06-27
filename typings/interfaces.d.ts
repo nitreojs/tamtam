@@ -1,10 +1,10 @@
-import * as Params from "./params";
-import * as Responses from "./responses";
+import * as Params from './params';
+import * as Responses from './responses';
 
 type ILinkType = "forward" | "reply";
 type IButtonIntent = "positive" | "negative" | "default";
 
-interface PhotoToken {
+interface IPhotoToken {
   /**
    * Encoded information of uploaded image
    */
@@ -166,7 +166,7 @@ interface IAttachmentInlineKeyboardPayload {
   /**
    * Two-dimensional array of buttons
    */
-  buttons: Array<Array<IButton>>;
+  buttons: Array<Array<Button>>;
 }
 
 interface IMessageSender {
@@ -222,7 +222,7 @@ interface IMessageBody {
   /**
    * Message attachments. Could be one of Attachment type. See description of this schema
    */
-  attachments?: Array<IAttachment> | null;
+  attachments?: Array<Attachment> | null;
 }
 
 interface IMessageStat {
@@ -262,7 +262,9 @@ interface IUpdateMessageCallback {
   callback: IUpdateMessageCallbackCallback;
 
   /**
-   * Original message containing inline keyboard. Can be null in case it had been deleted by the moment a bot got this update
+   * Original message containing inline keyboard.
+   * Can be null in case it had been deleted by the moment a bot
+   * got this update
    */
   message?: IMessage | null;
 }
@@ -447,14 +449,13 @@ interface IMessageCallback {
   /**
    * Callback ID
    */
-  callbackId: string;
+  id: string;
 
   /**
    * User who called the callback
    */
   user: IMessageSender;
 }
-
 
 export interface IPhoto {
   /**
@@ -470,7 +471,7 @@ export interface IPhoto {
   /**
    * Tokens were obtained after uploading images
    */
-  photos?: PhotoToken | null;
+  photos?: IPhotoToken | null;
 }
 
 export interface ILink {
@@ -494,7 +495,7 @@ export interface IParamsMessage {
   /**
    * Message attachments. See AttachmentRequest and it"s inheritors for full information.
    */
-  attachments?: Array<IAttachment> | null;
+  attachments?: Array<Attachment> | null;
 
   /**
    * Link to Message
@@ -844,7 +845,14 @@ export interface IBotRemovedContext {
 }
 
 export type ChatType = "dialog" | "chat" | "channel";
-export type IButton = IButtonCallback | IButtonLink | IButtonRequestContact | IButtonRequestGeoLocation;
-export type Context = IMessageCreatedContext | IMessageCallbackContext | IChatTitleChangedContext | IMessageEditedContext | IUserAddedContext | IMessageRemovedContext | IBotStartedContext;
-export type IAttachment = IAttachmentAudio | IAttachmentContact | IAttachmentFile | IAttachmentImage | IAttachmentInlineKeyboard | IAttachmentSticker | IAttachmentVideo;
-export type IUpdate = IUpdateMessageCallback | IUpdateMessageCreated | IUpdateMessageRemoved | IUpdateMessageEdited | IUpdateBotAdded | IUpdateBotRemoved | IUpdateUserAdded | IUpdateUserRemoved | IUpdateBotStarted | IUpdateChatTitleChanged;
+export type Button = IButtonCallback | IButtonLink | IButtonRequestContact | IButtonRequestGeoLocation;
+export type Context = IMessageCreatedContext | IMessageCallbackContext | IChatTitleChangedContext
+  | IMessageEditedContext | IUserAddedContext | IMessageRemovedContext
+  | IBotStartedContext;
+export type Attachment = IAttachmentAudio | IAttachmentContact | IAttachmentFile
+  | IAttachmentImage | IAttachmentInlineKeyboard | IAttachmentSticker
+  | IAttachmentVideo;
+export type Update = IUpdateMessageCallback | IUpdateMessageCreated | IUpdateMessageRemoved
+  | IUpdateMessageEdited | IUpdateBotAdded | IUpdateBotRemoved
+  | IUpdateUserAdded | IUpdateUserRemoved | IUpdateBotStarted
+  | IUpdateChatTitleChanged;

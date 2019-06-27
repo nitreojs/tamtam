@@ -1,6 +1,6 @@
-import API from "./api";
 import * as Params from "../typings/params";
 import * as Responses from "../typings/responses";
+import API from "./api";
 
 type Action = "typing_on" | "typing_off" | "sending_photo" | "sending_video" | "sending_audio" | "mark_seen";
 

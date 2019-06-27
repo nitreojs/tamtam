@@ -116,6 +116,7 @@ class Updates {
       try {
         await this.pollingHandler(update);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error('Handle polling error:', e);
       }
     });
@@ -134,8 +135,6 @@ class Updates {
     debug('update', update);
 
     let Context = contexts[type];
-
-    debug('Context', Context);
 
     return this.dispatchMiddleware(new Context(this.tamtam, payload));
   }

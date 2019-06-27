@@ -1,16 +1,22 @@
 import {
-  IAttachment,
+  Attachment,
   IBotCommand,
   ILink,
   IMessage,
   IMessageSender,
   IParamsMessage,
   IPhoto,
-} from "./interfaces";
+} from './interfaces';
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
-type UpdateType = "message_callback" | "message_created" | "message_edited" | "message_removed" | "bot_added" | "bot_removed" | "user_added" | "user_removed" | "bot_started" | "chat_title_changed";
+type UpdateType = "message_callback" | "message_created" | "message_edited"
+  | "message_removed" | "bot_added" | "bot_removed"
+  | "user_added" | "user_removed" | "bot_started"
+  | "chat_title_changed";
 type ButtonColor = "positive" | "negative" | "default";
+type Partial = {
+  [key: string]: any;
+}
 
 interface ICallback {
   /**
@@ -53,7 +59,10 @@ export interface IBotsEditInfoParams {
   name?: string | null;
 
   /**
-   * Bot unique identifier. It can be any string 4-64 characters long containing any digit, letter or special symbols: "-" or "_". It must starts with a letter
+   * Bot unique identifier.
+   * It can be any string 4-64 characters long containing
+   * any digit, letter or special symbols: "-" or "_".
+   * It must starts with a letter
    */
   username?: string | null;
 
@@ -63,7 +72,8 @@ export interface IBotsEditInfoParams {
   description?: string | null;
 
   /**
-   * Commands supported by bot. Pass empty list if you want to remove commands, <= 32 items
+   * Commands supported by bot.
+   * Pass empty list if you want to remove commands, <= 32 items
    */
   commands?: Array<IBotCommand> | null;
 
@@ -96,7 +106,8 @@ export interface IChatsGetChatsParams {
 
 export interface IChatsGetMembersParams {
   /**
-   * Comma-separated list of users identifiers to get their membership. When this parameter is passed, both count and marker are ignored.
+   * Comma-separated list of users identifiers to get their membership.
+   * When this parameter is passed, both count and marker are ignored.
    */
   user_ids?: Array<number> | null;
 
@@ -147,7 +158,7 @@ export interface IMessagesSendParams {
   /**
    * Message attachments. See `AttachmentRequest` and it"s inheritors for full information.
    */
-  attachments?: Array<IAttachment> | null;
+  attachments?: Array<Attachment> | null;
 
   /**
    * Link to Message
@@ -179,7 +190,7 @@ export interface IMessagesEditParams {
   /**
    * Message attachments. See AttachmentRequest and it"s inheritors for full information.
    */
-  attachments?: Array<IAttachment> | null;
+  attachments?: Array<Attachment> | null;
 
   /**
    * Link to Message
@@ -202,7 +213,7 @@ export interface IMessagesEditParams {
   notify?: boolean;
 }
 
-interface IMessagesAnswerCallbackParams {
+export interface IMessagesAnswerCallbackParams {
   user_id?: number;
 
   /**
@@ -284,7 +295,9 @@ export interface IMessageCallbackContext {
   callback: ICallback;
 
   /**
-   * Original message containing inline keyboard. Can be `null` in case it had been deleted by the moment a bot got this update.
+   * Original message containing inline keyboard.
+   * Can be `null` in case it had been deleted
+   * by the moment a bot got this update.
    */
   message: IMessage;
 
@@ -541,9 +554,9 @@ export interface IKeyboardLinkButtonParams {
 }
 
 export interface IAPICallParams {
-  query: object;
+  query: Partial;
 
-  body: object;
+  body: Partial;
 
   httpMethod?: HttpMethod;
 }

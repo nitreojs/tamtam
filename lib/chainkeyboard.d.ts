@@ -4,17 +4,17 @@ declare class ChainKeyboard {
   /**
    * Positive color
    */
-  static POSITIVE_COLOR: "positive";
+  public static POSITIVE_COLOR: "positive";
 
   /**
    * Negative color
    */
-  static NEGATIVE_COLOR: "negative";
+  public static NEGATIVE_COLOR: "negative";
 
   /**
    * Default color
    */
-  static DEFAULT_COLOR: "default";
+  public static DEFAULT_COLOR: "default";
 
   constructor();
 

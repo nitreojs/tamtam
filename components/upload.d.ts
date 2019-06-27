@@ -1,8 +1,8 @@
-import API from "./api";
 import * as Params from "../typings/params";
 import * as Responses from "../typings/responses";
+import API from "./api";
 
-type UploadType = 'photo' | 'video' | 'audio' | 'file';
+type UploadType = "photo" | "video" | "audio" | "file";
 
 export default class Upload {
   private api: API;

@@ -1,13 +1,9 @@
 # API
 
 * [bots](bots.md)
-
 * [chats](chats.md)
-
 * [messages](messages.md)
-
 * [subscriptions](subscriptions.md)
-
 * [upload](upload.md)
 
 If you can't understand what `UpdateType` or `Action` is, check `interfaces.md`!

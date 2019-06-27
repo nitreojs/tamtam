@@ -4,7 +4,7 @@
 tamtam.api.subscriptions;
 ```
 
-# Methods
+## Methods
 
 ### get
 
@@ -22,7 +22,8 @@ After calling this method, the bot will receive notifications about
 new events in chat rooms at the specified URL
 
 ```js
-tamtam.api.subscriptions.subscribe(url: string, params?: ISubscriptionsSubscribeParams); // => Promise<ISubscriptionsSubscribeResponse>
+tamtam.api.subscriptions.subscribe(url: string, params?: ISubscriptionsSubscribeParams);
+// => Promise<ISubscriptionsSubscribeResponse>
 ```
 
 ISubscriptionsSubscribeParams:
@@ -49,7 +50,8 @@ You can use this method for getting updates in case your bot
 is not subscribed to Webhook. The method is based on long polling
 
 ```js
-tamtam.api.subscriptions.getUpdates(params?: ISubscriptionsGetUpdatesParams); // => Promise<ISubscriptionsGetUpdatesResponse>
+tamtam.api.subscriptions.getUpdates(params?: ISubscriptionsGetUpdatesParams);
+// => Promise<ISubscriptionsGetUpdatesResponse>
 ```
 
 ISubscriptionsGetUpdatesParams:

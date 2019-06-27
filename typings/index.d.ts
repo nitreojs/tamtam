@@ -5,10 +5,10 @@ import * as Params from "./params";
 import Updates from "../components/updates";
 
 declare class TamTam {
-  constructor(params: Params.ITamTamParams);
-
   public api: API;
   public updates: Updates;
+
+  constructor(params: Params.ITamTamParams);
 }
 
 export {

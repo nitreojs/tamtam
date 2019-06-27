@@ -6,15 +6,17 @@ All responses are here!
 
 ### IBotsGetInfoResponse
 
-| Key             | Required | Type                                              |
-| --------------- | -------- | ------------------------------------------------- |
-| user_id         | true     | number                                            |
-| name            | true     | string                                            |
-| username        | false    | string                                            |
-| avatar_url      | false    | string                                            |
-| full_avatar_url | false    | string                                            |
-| commands        | false    | Array\<[IBotCommand](interfaces.md/#IBotCommand)> |
-| description     | false    | string                                            |
+| Key             | Required | Type                           |
+| --------------- | -------- | ------------------------------ |
+| user_id         | true     | number                         |
+| name            | true     | string                         |
+| username        | false    | string                         |
+| avatar_url      | false    | string                         |
+| full_avatar_url | false    | string                         |
+| commands        | false    | Array\<[IBotCommand][command]> |
+| description     | false    | string                         |
+
+[command]: interfaces.md/#IBotCommand
 
 ### IBotsEditInfoResponse
 
@@ -94,9 +96,11 @@ Equals to [ISuccess](interfaces.md/#ISuccess).
 
 ### ISubscriptionsGetResponse
 
-| Key           | Required | Type                                                  |
-| ------------- | -------- | ----------------------------------------------------- |
-| subscriptions | true     | Array\<[ISubscription](interfaces.md/#ISubscription)> |
+| Key           | Required | Type                                  |
+| ------------- | -------- | ------------------------------------- |
+| subscriptions | true     | Array\<[ISubscription][subscription]> |
+
+[subscription]: interfaces.md/#ISubscription
 
 ### ISubscriptionsSubscribeResponse
 
@@ -108,10 +112,10 @@ Equals to [ISuccess](interfaces.md/#ISuccess).
 
 ### ISubscriptionsGetUpdatesResponse
 
-| Key     | Required | Type                                      |
-| ------- | -------- | ----------------------------------------- |
-| updates | true     | Array\<[IUpdate](interfaces.md/#IUpdate)> |
-| marker  | true     | number                                    |
+| Key     | Required | Type                                    |
+| ------- | -------- | --------------------------------------- |
+| updates | true     | Array\<[Update](interfaces.md/#Update)> |
+| marker  | true     | number                                  |
 
 ## Upload responses
 

@@ -1,7 +1,5 @@
-import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
-import { Response, Request } from "express";
-
 import * as Params from "../typings/params";
+
 import {
   Context,
   IBotStartedContext,
@@ -15,6 +13,9 @@ import {
   IUserAddedContext,
   IUserRemovedContext,
 } from "../typings/interfaces";
+
+import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
+import { Response, Request } from "express";
 
 type Handler<T = Context> = Middleware<T>;
 type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Promise<MiddlewareReturn>;

@@ -4,7 +4,7 @@
 tamtam.api.upload;
 ```
 
-# Methods
+## Methods
 
 ### getUrl
 

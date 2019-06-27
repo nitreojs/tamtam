@@ -1,5 +1,5 @@
-import API from "./api";
 import * as Params from "../typings/params";
+import API from "./api";
 import Updates from "./updates";
 
 declare class TamTam {

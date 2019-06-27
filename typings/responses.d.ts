@@ -1,17 +1,18 @@
 import {
   ChatType,
-  IAttachment,
+  Attachment,
   IBotCommand,
   IMessage,
   IMessageSender,
   ISubscription,
   ISuccess,
-  IUpdate,
-} from "./interfaces";
+  Update,
+} from './interfaces';
 
 type LinkType = "forward" | "reply";
 type ChatStatus = "active" | "removed" | "left" | "closed" | "suspended";
-type Permission = "read_all_messages" | "add_remove_members" | "add_admins" | "change_chat_info" | "pin_message" | "write";
+type Permission = "read_all_messages" | "add_remove_members" | "add_admins"
+  | "change_chat_info" | "pin_message" | "write";
 
 interface IIcon {
   /**
@@ -74,7 +75,9 @@ interface IChat {
   owner_id?: number | null;
 
   /**
-   * Participants in chat with time of last activity. Can be null when you request list of chats. Visible for chat admins only
+   * Participants in chat with time of last activity.
+   * Can be null when you request list of chats.
+   * Visible for chat admins only
    */
   participants?: IParticipants | null;
 
@@ -150,10 +153,10 @@ interface ILinkMessage {
   /**
    * Message attachments. Could be one of Attachment type. See description of this schema
    */
-  attachments?: Array<IAttachment> | null;
+  attachments?: Array<Attachment> | null;
 }
 
-interface ILink {
+export interface ILink {
   /**
    * Type of linked message
    */
@@ -174,7 +177,6 @@ interface ILink {
    */
   message: ILinkMessage;
 }
-
 
 export interface IBotsGetInfoResponse {
   /**
@@ -323,7 +325,7 @@ export interface ISubscriptionsGetUpdatesResponse {
   /**
    * Page of updates
    */
-  updates: Array<IUpdate>;
+  updates: Array<Update>;
 
   /**
    * Pointer to the next data page
