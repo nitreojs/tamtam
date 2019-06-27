@@ -31,7 +31,7 @@ class API {
       query = {},
     } = params;
 
-    let url = `https://test2.tamtam.chat/${method}`;
+    let url = `https://botapi.tamtam.chat/${method}`;
 
     if (method === 'chats' && 'chat_id' in query) {
       url += `/${query.chat_id}${query.method ? '/' + query.method : ''}`;

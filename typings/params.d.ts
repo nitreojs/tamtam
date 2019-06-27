@@ -16,7 +16,7 @@ type UpdateType = "message_callback" | "message_created" | "message_edited"
 type ButtonColor = "positive" | "negative" | "default";
 type Partial = {
   [key: string]: any;
-}
+};
 
 interface ICallback {
   /**
