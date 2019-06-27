@@ -8,6 +8,8 @@
 
 # tamtam
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/4e22ff311d734ffb9c426393ada10c44)](https://app.codacy.com/app/nitreojs/tamtam?utm_source=github.com&utm_medium=referral&utm_content=nitreojs/tamtam&utm_campaign=Badge_Grade_Dashboard)
+
 tamtam is a powerful Node.js package which allows you to easily work with [TamTam](https://tt.me) [API](https://dev.tamtam.chat)!
 
 ## Installation
