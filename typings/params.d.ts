@@ -1,16 +1,16 @@
 import {
-  IBotCommand,
   IAttachment,
-  IPhoto,
+  IBotCommand,
   ILink,
-  IParamsMessage,
   IMessage,
   IMessageSender,
-} from './interfaces';
+  IParamsMessage,
+  IPhoto,
+} from "./interfaces";
 
-type HttpMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE' | 'PUT';
-type UpdateType = 'message_callback' | 'message_created' | 'message_edited' | 'message_removed' | 'bot_added' | 'bot_removed' | 'user_added' | 'user_removed' | 'bot_started' | 'chat_title_changed';
-type ButtonColor = 'positive' | 'negative' | 'default';
+type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
+type UpdateType = "message_callback" | "message_created" | "message_edited" | "message_removed" | "bot_added" | "bot_removed" | "user_added" | "user_removed" | "bot_started" | "chat_title_changed";
+type ButtonColor = "positive" | "negative" | "default";
 
 interface ICallback {
   /**
@@ -145,7 +145,7 @@ export interface IMessagesSendParams {
   text?: string | null;
 
   /**
-   * Message attachments. See `AttachmentRequest` and it's inheritors for full information.
+   * Message attachments. See `AttachmentRequest` and it"s inheritors for full information.
    */
   attachments?: Array<IAttachment> | null;
 
@@ -165,7 +165,7 @@ export interface IMessagesSendParams {
   chat_id?: number;
 
   /**
-   * If false, chat participants wouldn't be notified, default: true
+   * If false, chat participants wouldn"t be notified, default: true
    */
   notify?: boolean;
 }
@@ -177,7 +177,7 @@ export interface IMessagesEditParams {
   text?: string | null;
 
   /**
-   * Message attachments. See AttachmentRequest and it's inheritors for full information.
+   * Message attachments. See AttachmentRequest and it"s inheritors for full information.
    */
   attachments?: Array<IAttachment> | null;
 
@@ -197,7 +197,7 @@ export interface IMessagesEditParams {
   chat_id?: number;
 
   /**
-   * If false, chat participants wouldn't be notified, default: true
+   * If false, chat participants wouldn"t be notified, default: true
    */
   notify?: boolean;
 }
@@ -240,12 +240,12 @@ export interface ISubscriptionsGetUpdatesParams {
   timeout?: number;
 
   /**
-   * Identifier of first requested update. Pass null to get updates you didn't get yet.
+   * Identifier of first requested update. Pass null to get updates you didn"t get yet.
    */
   marker?: number | null;
 
   /**
-   * List of update types your bot want to receive, example: ['message_created', 'message_callback']
+   * List of update types your bot want to receive, example: ["message_created", "message_callback"]
    */
   types?: Array<UpdateType> | null;
 }
@@ -411,7 +411,7 @@ export interface IBotStartedContext {
   chat_id: number;
 
   /**
-   * User who pressed the 'Start' button
+   * User who pressed the "Start" button
    */
   user_id: number;
 
@@ -516,7 +516,7 @@ export interface IKeyboardGeoButtonParams {
   text: string;
 
   /**
-   * If true, sends location without asking user's confirmation
+   * If true, sends location without asking user"s confirmation
    */
   quick?: boolean;
 }

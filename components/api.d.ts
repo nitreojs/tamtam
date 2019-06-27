@@ -1,9 +1,9 @@
-import * as Params from '../typings/params';
-import Bots from './bots';
-import Chats from './chats';
-import Messages from './messages';
-import Subscriptions from './subscriptions';
-import Upload from './upload';
+import Bots from "./bots";
+import Chats from "./chats";
+import Messages from "./messages";
+import * as Params from "../typings/params";
+import Subscriptions from "./subscriptions";
+import Upload from "./upload";
 
 /**
  * API

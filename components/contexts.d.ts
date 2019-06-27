@@ -1,6 +1,6 @@
-import TamTam from './tamtam';
-import * as Responses from '../typings/responses';
-import * as Params from '../typings/params';
+import * as Params from "../typings/params";
+import * as Responses from "../typings/responses";
+import TamTam from "./tamtam";
 
 declare class Context {
   constructor(tamtam: TamTam, type: string);
@@ -94,7 +94,11 @@ declare class ChatTitleChanged extends Context {
   public send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
 }
 
-export = {
+export {
+  BotStartedContext,
+  BotAddedContext,
+  BotRemovedContext,
+  ChatTitleChanged,
   Context,
   MessageCallbackContext,
   MessageCreatedContext,
@@ -102,8 +106,4 @@ export = {
   MessageRemovedContext,
   UserAddedContext,
   UserRemovedContext,
-  BotStartedContext,
-  BotAddedContext,
-  BotRemovedContext,
-  ChatTitleChanged,
 };

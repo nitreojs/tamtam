@@ -1,8 +1,8 @@
-import * as Params from './params';
-import API from '../components/api';
-import Updates from '../components/updates';
-import Keyboard from '../lib/keyboard';
-import ChainKeyboard from '../lib/chainkeyboard';
+import API from "../components/api";
+import ChainKeyboard from "../lib/chainkeyboard";
+import Keyboard from "../lib/keyboard";
+import * as Params from "./params";
+import Updates from "../components/updates";
 
 declare class TamTam {
   constructor(params: Params.ITamTamParams);

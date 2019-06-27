@@ -1,8 +1,8 @@
-import * as Params from './params';
-import * as Responses from './responses';
+import * as Params from "./params";
+import * as Responses from "./responses";
 
-type ILinkType = 'forward' | 'reply';
-type IButtonIntent = 'positive' | 'negative' | 'default';
+type ILinkType = "forward" | "reply";
+type IButtonIntent = "positive" | "negative" | "default";
 
 interface PhotoToken {
   /**
@@ -24,7 +24,7 @@ export interface IBotCommand {
 }
 
 interface IButtonCallback {
-  type: 'callback';
+  type: "callback";
 
   /**
    * Visible text of button, <= 128 characters
@@ -37,13 +37,13 @@ interface IButtonCallback {
   payload?: string;
 
   /**
-   * Intent of button. Affects clients representation, default: 'default'
+   * Intent of button. Affects clients representation, default: "default"
    */
   intent?: IButtonIntent;
 }
 
 interface IButtonLink {
-  type: 'link';
+  type: "link";
 
   /**
    * Visible text of button, <= 128 characters
@@ -57,7 +57,7 @@ interface IButtonLink {
 }
 
 interface IButtonRequestContact {
-  type: 'request_contact';
+  type: "request_contact";
 
   /**
    * Visible text of button, <= 128 characters
@@ -66,7 +66,7 @@ interface IButtonRequestContact {
 }
 
 interface IButtonRequestGeoLocation {
-  type: 'request_geo_location';
+  type: "request_geo_location";
 
   /**
    * Visible text of button, <= 128 characters
@@ -74,19 +74,19 @@ interface IButtonRequestGeoLocation {
   text: string;
 
   /**
-   * If true, sends location without asking user's confirmation, default: false
+   * If true, sends location without asking user"s confirmation, default: false
    */
   quick?: boolean;
 }
 
 interface IAttachmentImage {
-  type: 'image';
+  type: "image";
 
   payload: IPhoto;
 }
 
 interface IAttachmentVideo {
-  type: 'video';
+  type: "video";
 
   payload: IAttachmentVideoPayload;
 }
@@ -96,7 +96,7 @@ interface IAttachmentVideoPayload {
 }
 
 interface IAttachmentAudio {
-  type: 'audio';
+  type: "audio";
 
   payload: IAttachmentAudioPayload;
 }
@@ -106,7 +106,7 @@ interface IAttachmentAudioPayload {
 }
 
 interface IAttachmentFile {
-  type: 'file';
+  type: "file";
 
   payload: IAttachmentFilePayload;
 }
@@ -116,7 +116,7 @@ interface IAttachmentFilePayload {
 }
 
 interface IAttachmentContact {
-  type: 'contact';
+  type: "contact";
 
   payload: IAttachmentContactPayload;
 }
@@ -144,7 +144,7 @@ interface IAttachmentContactPayload {
 }
 
 interface IAttachmentSticker {
-  type: 'sticker';
+  type: "sticker";
 
   payload: IAttachmentStickerPayload;
 }
@@ -157,7 +157,7 @@ interface IAttachmentStickerPayload {
 }
 
 interface IAttachmentInlineKeyboard {
-  type: 'inline_keyboard';
+  type: "inline_keyboard";
 
   payload: IAttachmentInlineKeyboardPayload;
 }
@@ -252,7 +252,7 @@ interface IUpdateMessageCallbackCallback {
 }
 
 interface IUpdateMessageCallback {
-  update_type: 'message_callback';
+  update_type: "message_callback";
 
   /**
    * Unix-time when event has occured
@@ -268,7 +268,7 @@ interface IUpdateMessageCallback {
 }
 
 interface IUpdateMessageCreated {
-  update_type: 'message_created';
+  update_type: "message_created";
 
   /**
    * Unix-time when event has occured
@@ -282,7 +282,7 @@ interface IUpdateMessageCreated {
 }
 
 interface IUpdateMessageRemoved {
-  update_type: 'message_removed';
+  update_type: "message_removed";
 
   /**
    * Unix-time when event has occured
@@ -296,7 +296,7 @@ interface IUpdateMessageRemoved {
 }
 
 interface IUpdateMessageEdited {
-  update_type: 'message_edited';
+  update_type: "message_edited";
 
   /**
    * Unix-time when event has occured
@@ -310,7 +310,7 @@ interface IUpdateMessageEdited {
 }
 
 interface IUpdateBotAdded {
-  update_type: 'bot_added';
+  update_type: "bot_added";
 
   /**
    * Unix-time when event has occured
@@ -329,7 +329,7 @@ interface IUpdateBotAdded {
 }
 
 interface IUpdateBotRemoved {
-  update_type: 'bot_removed';
+  update_type: "bot_removed";
 
   /**
    * Unix-time when event has occured
@@ -348,7 +348,7 @@ interface IUpdateBotRemoved {
 }
 
 interface IUpdateUserAdded {
-  update_type: 'user_added';
+  update_type: "user_added";
 
   /**
    * Unix-time when event has occured
@@ -372,7 +372,7 @@ interface IUpdateUserAdded {
 }
 
 interface IUpdateUserRemoved {
-  update_type: 'user_removed';
+  update_type: "user_removed";
 
   /**
    * Unix-time when event has occured
@@ -396,7 +396,7 @@ interface IUpdateUserRemoved {
 }
 
 interface IUpdateBotStarted {
-  update_type: 'bot_started';
+  update_type: "bot_started";
 
   /**
    * Unix-time when event has occured
@@ -409,13 +409,13 @@ interface IUpdateBotStarted {
   chat_id: number;
 
   /**
-   * User pressed the 'Start' button
+   * User pressed the "Start" button
    */
   user_id: number;
 }
 
 interface IUpdateChatTitleChanged {
-  update_type: 'chat_title_changed';
+  update_type: "chat_title_changed";
 
   /**
    * Unix-time when event has occured
@@ -492,7 +492,7 @@ export interface IParamsMessage {
   text?: string | null;
 
   /**
-   * Message attachments. See AttachmentRequest and it's inheritors for full information.
+   * Message attachments. See AttachmentRequest and it"s inheritors for full information.
    */
   attachments?: Array<IAttachment> | null;
 
@@ -512,7 +512,7 @@ export interface IParamsMessage {
   chat_id?: number;
 
   /**
-   * If false, chat participants wouldn't be notified, default: true
+   * If false, chat participants wouldn"t be notified, default: true
    */
   notify?: boolean;
 }
@@ -789,7 +789,7 @@ export interface IBotStartedContext {
   chatId: number;
 
   /**
-   * User who pressed the 'Start' button
+   * User who pressed the "Start" button
    */
   userId: number;
 
@@ -799,7 +799,7 @@ export interface IBotStartedContext {
   timestamp: number;
 
   /**
-   * Send message to the user who pressed the 'Start' button
+   * Send message to the user who pressed the "Start" button
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
 }
@@ -843,7 +843,7 @@ export interface IBotRemovedContext {
   timestamp: number;
 }
 
-export type ChatType = 'dialog' | 'chat' | 'channel';
+export type ChatType = "dialog" | "chat" | "channel";
 export type IButton = IButtonCallback | IButtonLink | IButtonRequestContact | IButtonRequestGeoLocation;
 export type Context = IMessageCreatedContext | IMessageCallbackContext | IChatTitleChangedContext | IMessageEditedContext | IUserAddedContext | IMessageRemovedContext | IBotStartedContext;
 export type IAttachment = IAttachmentAudio | IAttachmentContact | IAttachmentFile | IAttachmentImage | IAttachmentInlineKeyboard | IAttachmentSticker | IAttachmentVideo;

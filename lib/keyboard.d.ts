@@ -1,18 +1,18 @@
-import * as Params from '../typings/params';
+import * as Params from "../typings/params";
 import {
   IButton,
   IButtonCallback,
   IButtonLink,
   IButtonRequestContact,
   IButtonRequestGeoLocation,
-} from '../typings/interfaces';
+} from "../typings/interfaces";
 
 interface IKeyboardKeyboardPayload {
   buttons: Array<IButton>;
 }
 
 interface IKeyboardKeyboardResponse {
-  type: 'inline_keyboard';
+  type: "inline_keyboard";
 
   payload: IKeyboardKeyboardPayload;
 }
@@ -21,17 +21,17 @@ declare class Keyboard {
   /**
    * Positive color
    */
-  static POSITIVE_COLOR: 'positive';
+  static POSITIVE_COLOR: "positive";
 
   /**
    * Negative color
    */
-  static NEGATIVE_COLOR: 'negative';
+  static NEGATIVE_COLOR: "negative";
 
   /**
    * Default color
    */
-  static DEFAULT_COLOR: 'default';
+  static DEFAULT_COLOR: "default";
 
   /**
    * Generate keyboard

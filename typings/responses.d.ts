@@ -1,17 +1,17 @@
 import {
-  IBotCommand,
-  IAttachment,
-  ISuccess,
-  ISubscription,
-  IUpdate,
-  IMessageSender,
   ChatType,
+  IAttachment,
+  IBotCommand,
   IMessage,
-} from './interfaces';
+  IMessageSender,
+  ISubscription,
+  ISuccess,
+  IUpdate,
+} from "./interfaces";
 
-type LinkType = 'forward' | 'reply';
-type ChatStatus = 'active' | 'removed' | 'left' | 'closed' | 'suspended';
-type Permission = 'read_all_messages' | 'add_remove_members' | 'add_admins' | 'change_chat_info' | 'pin_message' | 'write';
+type LinkType = "forward" | "reply";
+type ChatStatus = "active" | "removed" | "left" | "closed" | "suspended";
+type Permission = "read_all_messages" | "add_remove_members" | "add_admins" | "change_chat_info" | "pin_message" | "write";
 
 interface IIcon {
   /**

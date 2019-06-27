@@ -1,6 +1,6 @@
-import * as Params from '../typings/params';
-import * as Responses from '../typings/responses';
-import API from './api';
+import API from "./api";
+import * as Params from "../typings/params";
+import * as Responses from "../typings/responses";
 
 declare class Bots {
   private api: API;

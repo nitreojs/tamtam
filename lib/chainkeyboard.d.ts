@@ -1,20 +1,20 @@
-import * as Params from '../typings/params';
+import * as Params from "../typings/params";
 
 declare class ChainKeyboard {
   /**
    * Positive color
    */
-  static POSITIVE_COLOR: 'positive';
+  static POSITIVE_COLOR: "positive";
 
   /**
    * Negative color
    */
-  static NEGATIVE_COLOR: 'negative';
+  static NEGATIVE_COLOR: "negative";
 
   /**
    * Default color
    */
-  static DEFAULT_COLOR: 'default';
+  static DEFAULT_COLOR: "default";
 
   constructor();
 

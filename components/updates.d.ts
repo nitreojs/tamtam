@@ -1,20 +1,20 @@
-import { Middleware, NextMiddleware, MiddlewareReturn } from 'middleware-io';
-import { Request, Response } from 'express';
+import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
+import { Response, Request } from "express";
 
-import * as Params from '../typings/params';
+import * as Params from "../typings/params";
 import {
   Context,
+  IBotStartedContext,
+  IBotAddedContext,
+  IBotRemovedContext,
+  IChatTitleChangedContext,
   IMessageCallbackContext,
   IMessageCreatedContext,
   IMessageEditedContext,
   IMessageRemovedContext,
   IUserAddedContext,
   IUserRemovedContext,
-  IBotStartedContext,
-  IBotAddedContext,
-  IBotRemovedContext,
-  IChatTitleChangedContext,
-} from '../typings/interfaces';
+} from "../typings/interfaces";
 
 type Handler<T = Context> = Middleware<T>;
 type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Promise<MiddlewareReturn>;
@@ -50,25 +50,25 @@ declare class Updates {
   /**
    * Subscribe to events
    */
-  public on(events: 'message_callback', handler: Handler<IMessageCallbackContext>): this;
+  public on(events: "message_callback", handler: Handler<IMessageCallbackContext>): this;
 
-  public on(events: 'message_created', handler: Handler<IMessageCreatedContext>): this;
+  public on(events: "message_created", handler: Handler<IMessageCreatedContext>): this;
 
-  public on(events: 'message_edited', handler: Handler<IMessageEditedContext>): this;
+  public on(events: "message_edited", handler: Handler<IMessageEditedContext>): this;
 
-  public on(events: 'message_removed', handler: Handler<IMessageRemovedContext>): this;
+  public on(events: "message_removed", handler: Handler<IMessageRemovedContext>): this;
 
-  public on(events: 'user_added', handler: Handler<IUserAddedContext>): this;
+  public on(events: "user_added", handler: Handler<IUserAddedContext>): this;
 
-  public on(events: 'user_removed', handler: Handler<IUserRemovedContext>): this;
+  public on(events: "user_removed", handler: Handler<IUserRemovedContext>): this;
 
-  public on(events: 'bot_started', handler: Handler<IBotStartedContext>): this;
+  public on(events: "bot_started", handler: Handler<IBotStartedContext>): this;
 
-  public on(events: 'bot_added', handler: Handler<IBotAddedContext>): this;
+  public on(events: "bot_added", handler: Handler<IBotAddedContext>): this;
 
-  public on(events: 'bot_removed', handler: Handler<IBotRemovedContext>): this;
+  public on(events: "bot_removed", handler: Handler<IBotRemovedContext>): this;
 
-  public on(events: 'chat_title_changed', handler: Handler<IChatTitleChangedContext>): this;
+  public on(events: "chat_title_changed", handler: Handler<IChatTitleChangedContext>): this;
 
   public on(events: Array<Params.UpdateType> | Params.UpdateType, handler: Handler): this;
 
