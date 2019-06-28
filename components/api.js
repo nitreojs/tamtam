@@ -1,5 +1,5 @@
 let fetch = require('node-fetch');
-let { stringify } = require('querystring');
+let debug = require('debug')('tamtam:api');
 
 let Bots = require('./bots');
 let Chats = require('./chats');
@@ -37,7 +37,9 @@ class API {
       url += `/${query.chat_id}${query.method ? '/' + query.method : ''}`;
     }
 
-    url += `?access_token=${this.tt.token}&${stringify(query)}`;
+    url += `?access_token=${this.tt.token}&${new URLSearchParams(query)}`;
+
+    debug(url);
 
     let response = await (await fetch(url, {
       method: httpMethod,

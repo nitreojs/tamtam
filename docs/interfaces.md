@@ -110,8 +110,6 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | type    | true     | 'inline_keyboard'                           |
 | payload | true     | [IAttachmentInlineKeyboardPayload][payload] |
 
-[payload]: #IAttachmentInlineKeyboardPayload
-
 ## IAttachmentInlineKeyboardPayload
 
 | Key     | Required | Type                              |
@@ -157,7 +155,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | type    | true     | 'callback'                      |
 | text    | true     | string                          |
 | payload | false    | string                          |
-| intent  | false    | [IButtonIntent](#IButtonIntent) |
+| color   | false    | [IButtonIntent](#IButtonIntent) |
 
 ## IButtonLink
 
@@ -223,9 +221,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IParticipants
 
-| Key           | Required | Type   |
-| ------------- | -------- | ------ |
-| [key: string] | true     | number |
+This obejct can contain any *string* key with *number* value.
 
 ## IChat
 
@@ -341,8 +337,6 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | callback    | true     | [IUpdateMessageCallbackCallback][callback] |
 | message     | false    | [IMessage](#IMessage)                      |
 
-[callback]: #IUpdateMessageCallbackCallback
-
 ## IUpdateMessageCallbackCallback
 
 | Key         | Required | Type                              |
@@ -432,3 +426,6 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | chat_id     | true     | number               |
 | user_id     | true     | number               |
 | title       | true     | string               |
+
+[payload]: #IAttachmentInlineKeyboardPayload
+[callback]: #IUpdateMessageCallbackCallback

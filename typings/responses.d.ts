@@ -7,7 +7,7 @@ import {
   ISubscription,
   ISuccess,
   Update,
-} from './interfaces';
+} from "./interfaces";
 
 type LinkType = "forward" | "reply";
 type ChatStatus = "active" | "removed" | "left" | "closed" | "suspended";

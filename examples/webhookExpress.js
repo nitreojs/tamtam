@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/', tamtam.updates.getWebhookCallback());
 
 tamtam.updates.on('message_created', async (ctx) => {
-  ctx.send('Check this out! I\'m working!');
+  await ctx.send('Check this out! I\'m working!');
 });
 
 // eslint-disable-next-line no-console

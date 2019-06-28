@@ -98,9 +98,7 @@ class Updates {
       types: this.events,
     };
 
-    if (this.marker) {
-      parameters['marker'] = this.marker;
-    }
+    if (this.marker) parameters.marker = this.marker;
 
     debug('events', this.events);
 

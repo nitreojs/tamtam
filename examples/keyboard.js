@@ -11,7 +11,7 @@ tamtam.updates.on('message_created', async (ctx) => {
         [
           Keyboard.callbackButton({
             text: 'Red (negative) button',
-            intent: Keyboard.NEGATIVE_COLOR,
+            color: Keyboard.NEGATIVE_COLOR,
           }),
 
           Keyboard.callbackButton({
@@ -22,7 +22,7 @@ tamtam.updates.on('message_created', async (ctx) => {
         [
           Keyboard.callbackButton({
             text: 'Blue (positive) button',
-            intent: Keyboard.POSITIVE_COLOR,
+            color: Keyboard.POSITIVE_COLOR,
             payload: 'some payload here',
           }),
         ],

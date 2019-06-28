@@ -1,5 +1,5 @@
-import * as Params from './params';
-import * as Responses from './responses';
+import * as Params from "./params";
+import * as Responses from "./responses";
 
 type ILinkType = "forward" | "reply";
 type IButtonIntent = "positive" | "negative" | "default";
@@ -39,7 +39,7 @@ interface IButtonCallback {
   /**
    * Intent of button. Affects clients representation, default: "default"
    */
-  intent?: IButtonIntent;
+  color?: IButtonIntent;
 }
 
 interface IButtonLink {
@@ -455,6 +455,11 @@ interface IMessageCallback {
    * User who called the callback
    */
   user: IMessageSender;
+
+  /**
+   * Button payload
+   */
+  payload?: string | null;
 }
 
 export interface IPhoto {

@@ -6,7 +6,7 @@ import {
   IMessageSender,
   IParamsMessage,
   IPhoto,
-} from './interfaces';
+} from "./interfaces";
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
 type UpdateType = "message_callback" | "message_created" | "message_edited"
@@ -14,9 +14,10 @@ type UpdateType = "message_callback" | "message_created" | "message_edited"
   | "user_added" | "user_removed" | "bot_started"
   | "chat_title_changed";
 type ButtonColor = "positive" | "negative" | "default";
-type Partial = {
+
+interface IPartial {
   [key: string]: any;
-};
+}
 
 interface ICallback {
   /**
@@ -25,9 +26,9 @@ interface ICallback {
   timestamp: number;
 
   /**
-   * Current keyboard identifier
+   * Current button identifier
    */
-  callback_id: string;
+  id: string;
 
   /**
    * User who pressed the button
@@ -42,7 +43,7 @@ interface ICallback {
 
 export interface ITamTamParams {
   /**
-   * Token of a bot
+   * Bot's token
    */
   token: string;
 
@@ -519,7 +520,7 @@ export interface IKeyboardCallbackButtonParams {
   /**
    * Button intent
    */
-  intent?: ButtonColor;
+  color?: ButtonColor;
 }
 
 export interface IKeyboardGeoButtonParams {
@@ -554,9 +555,9 @@ export interface IKeyboardLinkButtonParams {
 }
 
 export interface IAPICallParams {
-  query: Partial;
+  query: IPartial;
 
-  body: Partial;
+  body: IPartial;
 
   httpMethod?: HttpMethod;
 }

@@ -5,7 +5,7 @@ let tamtam = new TamTam({
 });
 
 tamtam.updates.on('message_created', async (ctx) => {
-  ctx.reply('Do you see this? I can reply to your message real quick!');
+  await ctx.reply('Do you see this? I can reply to your message real quick!');
 });
 
 /**

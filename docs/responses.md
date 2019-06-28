@@ -16,8 +16,6 @@ All responses are here!
 | commands        | false    | Array\<[IBotCommand][command]> |
 | description     | false    | string                         |
 
-[command]: interfaces.md/#IBotCommand
-
 ### IBotsEditInfoResponse
 
 Equals to [IBotsGetInfoResponse](#IBotsGetInfoResponse).
@@ -100,8 +98,6 @@ Equals to [ISuccess](interfaces.md/#ISuccess).
 | ------------- | -------- | ------------------------------------- |
 | subscriptions | true     | Array\<[ISubscription][subscription]> |
 
-[subscription]: interfaces.md/#ISubscription
-
 ### ISubscriptionsSubscribeResponse
 
 Equals to [ISuccess](interfaces.md/#ISuccess).
@@ -124,3 +120,6 @@ Equals to [ISuccess](interfaces.md/#ISuccess).
 | Key | Required | Type   |
 | --- | -------- | ------ |
 | url | true     | string |
+
+[command]: interfaces.md/#IBotCommand
+[subscription]: interfaces.md/#ISubscription

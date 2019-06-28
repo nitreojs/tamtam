@@ -1,6 +1,6 @@
 {
   "name": "tamtam",
-  "version": "1.0.1-rc.1",
+  "version": "1.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -29,11 +29,12 @@
   "dependencies": {
     "debug": "^4.1.1",
     "middleware-io": "^2.0.0",
-    "node-fetch": "^2.6.0",
-    "querystring": "^0.2.0"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "babel-eslint": "8",
-    "eslint": "4.x"
+    "eslint": "4.x",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
   }
 }
