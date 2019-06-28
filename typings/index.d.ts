@@ -1,9 +1,9 @@
 import * as Params from "./params";
-import API from "./components/api";
-import ChainKeyboard from "./chain-keyboard";
-import Keyboard from "./keyboard";
-import Markdown from "./markdown";
-import Updates from "./components/updates";
+import API from "../src/components/api";
+import ChainKeyboard from "../src/chain-keyboard";
+import Keyboard from "../src/keyboard";
+import Markdown from "../src/markdown";
+import Updates from "../src/components/updates";
 
 declare class TamTam {
   public api: API;
