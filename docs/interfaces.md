@@ -155,12 +155,12 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IButtonCallback
 
-| Key     | Required | Type                            |
-| ------- | -------- | ------------------------------- |
-| type    | true     | 'callback'                      |
-| text    | true     | string                          |
-| payload | false    | string                          |
-| color   | false    | [IButtonIntent](#IButtonIntent) |
+| Key     | Required | Type                          |
+| ------- | -------- | ----------------------------- |
+| type    | true     | 'callback'                    |
+| text    | true     | string                        |
+| payload | false    | string                        |
+| color   | false    | [ButtonIntent](#ButtonIntent) |
 
 ## IButtonLink
 
@@ -185,7 +185,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 | text  | true     | string                 |
 | quick | false    | boolean                |
 
-## IButtonIntent
+## ButtonIntent
 
 **Enum**: `positive`, `negative` or `default`
 

@@ -1,6 +1,6 @@
-let TamTam = require('../src/components/tamtam');
+let TamTam = require('./components/tamtam');
 let Keyboard = require('./keyboard');
-let ChainKeyboard = require('./chainkeyboard');
+let ChainKeyboard = require('./chain-keyboard');
 let Markdown = require('./markdown');
 
 module.exports = {

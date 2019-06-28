@@ -1,8 +1,9 @@
 import * as Params from './params';
 import * as Responses from './responses';
 
-type ILinkType = "forward" | "reply";
-type IButtonIntent = "positive" | "negative" | "default";
+type LinkType = "forward" | "reply";
+type ButtonIntent = "positive" | "negative" | "default";
+type AttachmentType = "audio" | "video" | "file" | "image" | "contact" | "sticker" | "share" | "location" | "inline_keyboard";
 
 interface IPhotoToken {
   /**
@@ -39,7 +40,7 @@ interface IButtonCallback {
   /**
    * Intent of button. Affects clients representation, default: "default"
    */
-  color?: IButtonIntent;
+  color?: ButtonIntent;
 }
 
 interface IButtonLink {
@@ -204,6 +205,19 @@ interface IAttachmentInlineKeyboardPayload {
    */
   buttons: Array<Array<Button>>;
 }
+
+// interface IAttachmentShare {
+//   type: "share";
+
+//   payload: IAttachmentSharePayload;
+// }
+
+// interface IAttachmentSharePayload {
+//   /**
+//    * Media attachment URL
+//    */
+//   url: string;
+// }
 
 interface IUser {
   /**
@@ -519,7 +533,7 @@ export interface ILink {
   /**
    * Type of message link
    */
-  type: ILinkType;
+  type: LinkType;
 
   /**
    * Message identifier of original message

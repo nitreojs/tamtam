@@ -1,6 +1,6 @@
 let { inspect } = require('util');
 
-let TamTamError = require('../src/components/tterror');
+let TamTamError = require('./components/tterror');
 
 class Keyboard {
   constructor() {
@@ -17,7 +17,7 @@ class Keyboard {
 
   static DEFAULT_COLOR = 'default';
 
-  static keyboard = (rows) => {
+  static keyboard(rows) {
     if (rows.length > 30) {
       throw new TamTamError({
         code: 'errors.keyboardRowsLimit',
