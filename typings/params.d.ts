@@ -6,7 +6,7 @@ import {
   IMessageSender,
   IParamsMessage,
   IPhoto,
-} from "./interfaces";
+} from './interfaces';
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
 type UpdateType = "message_callback" | "message_created" | "message_edited"

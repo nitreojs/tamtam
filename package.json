@@ -34,6 +34,7 @@
   "devDependencies": {
     "babel-eslint": "8",
     "eslint": "4.x",
+    "remark-lint": "^6.0.5",
     "tslint": "^5.18.0",
     "typescript": "^3.5.2"
   }

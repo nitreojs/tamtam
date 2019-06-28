@@ -1,5 +1,5 @@
-import * as Params from "./params";
-import * as Responses from "./responses";
+import * as Params from './params';
+import * as Responses from './responses';
 
 type ILinkType = "forward" | "reply";
 type IButtonIntent = "positive" | "negative" | "default";
