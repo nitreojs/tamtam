@@ -221,7 +221,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IParticipants
 
-This obejct can contain any *string* key with *number* value.
+This object can contain any *string* key with *number* value.
 
 ## IChat
 

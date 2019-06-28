@@ -52,6 +52,9 @@ API review you can find [here](docs/README.md).
 ## Links
 
 [TamTam channel](https://tt.me/tamtam-node)
+
 [TamTam RU chat](https://tt.me/tamtam-node-ru-chat)
+
 [TamTam EN chat](https://tt.me/tamtam-node-en-chat)
+
 [VK chat](https://vk.me/join/AJQ1d06ezxH/FbB3JDnQMcpT)
