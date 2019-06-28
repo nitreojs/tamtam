@@ -3,7 +3,7 @@ import {
   IBotCommand,
   ILink,
   IMessage,
-  IMessageSender,
+  IUser,
   IParamsMessage,
   IPhoto,
 } from './interfaces';
@@ -14,6 +14,8 @@ type UpdateType = "message_callback" | "message_created" | "message_edited"
   | "user_added" | "user_removed" | "bot_started"
   | "chat_title_changed";
 type ButtonColor = "positive" | "negative" | "default";
+type Action = "typing_on" | "typing_off" | "sending_photo"
+  | "sending_video" | "sending_audio" | "mark_seen";
 
 interface IPartial {
   [key: string]: any;
@@ -33,7 +35,7 @@ interface ICallback {
   /**
    * User who pressed the button
    */
-  user: IMessageSender;
+  user: IUser;
 
   /**
    * Button payload
@@ -427,7 +429,7 @@ export interface IBotStartedContext {
   /**
    * User who pressed the "Start" button
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * Unix-time when event has occured
@@ -560,4 +562,31 @@ export interface IAPICallParams {
   body: IPartial;
 
   httpMethod?: HttpMethod;
+}
+
+export interface IChatsSendActionParams {
+  chatId: number;
+
+  action: Action;
+}
+
+export interface IChatsAddMembersParams {
+  /**
+   * Chat identifier
+   */
+  chatId: number;
+
+  userIds: Array<number> | number;
+}
+
+export interface IChatsRemoveMemberParams {
+  /**
+   * Chat identifier
+   */
+  chatId: number;
+
+  /**
+   * User ID to remove from chat
+   */
+  userId: number;
 }

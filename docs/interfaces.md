@@ -63,9 +63,10 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IAttachmentAudioPayload
 
-| Key | Required | Type   |
-| --- | -------- | ------ |
-| id  | true     | number |
+| Key   | Required | Type   |
+| ----- | -------- | ------ |
+| id    | true     | number |
+| token | true     | string |
 
 ## IAttachmentContact
 
@@ -92,9 +93,12 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IAttachmentFilePayload
 
-| Key    | Required | Type   |
-| ------ | -------- | ------ |
-| fileId | true     | number |
+| Key      | Required | Type   |
+| -------- | -------- | ------ |
+| fileId   | true     | number |
+| size     | true     | number |
+| filename | true     | string |
+| token    | true     | string |
 
 ## IAttachmentImage
 
@@ -138,9 +142,10 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IAttachmentVideoPayload
 
-| Key | Required | Type   |
-| --- | -------- | ------ |
-| id  | true     | number |
+| Key   | Required | Type   |
+| ----- | -------- | ------ |
+| id    | true     | number |
+| token | true     | string |
 
 ## Button
 
@@ -264,14 +269,14 @@ This object can contain any *string* key with *number* value.
 
 | Key       | Required | Type                                    |
 | --------- | -------- | --------------------------------------- |
-| sender    | false    | [IMessageSender](#IMessageSender)       |
+| sender    | false    | [IUser](#IUser)                         |
 | recipient | true     | [IMessageRecipient](#IMessageRecipient) |
 | timestamp | true     | number                                  |
 | link      | false    | [ILink](#ILink)                         |
 | body      | true     | [IMessageBody](#IMessageBody)           |
 | stat      | false    | [IMessageStat](#IMessageStat)           |
 
-## IMessageSender
+## IUser
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
@@ -339,12 +344,12 @@ This object can contain any *string* key with *number* value.
 
 ## IUpdateMessageCallbackCallback
 
-| Key         | Required | Type                              |
-| ----------- | -------- | --------------------------------- |
-| timestamp   | true     | number                            |
-| callback_id | true     | string                            |
-| payload     | false    | string                            |
-| user        | true     | [IMessageSender](#IMessageSender) |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| timestamp   | true     | number          |
+| callback_id | true     | string          |
+| payload     | false    | string          |
+| user        | true     | [IUser](#IUser) |
 
 ## IUpdateMessageCreated
 
@@ -372,50 +377,50 @@ This object can contain any *string* key with *number* value.
 
 ## IUpdateBotAdded
 
-| Key         | Required | Type        |
-| ----------- | -------- | ----------- |
-| update_type | true     | 'bot_added' |
-| timestamp   | true     | number      |
-| chat_id     | true     | number      |
-| user_id     | true     | number      |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| update_type | true     | 'bot_added'     |
+| timestamp   | true     | number          |
+| chat_id     | true     | number          |
+| user        | true     | [IUser](#IUser) |
 
 ## IUpdateBotRemoved
 
-| Key         | Required | Type          |
-| ----------- | -------- | ------------- |
-| update_type | true     | 'bot_removed' |
-| timestamp   | true     | number        |
-| chat_id     | true     | number        |
-| user_id     | true     | number        |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| update_type | true     | 'bot_removed'   |
+| timestamp   | true     | number          |
+| chat_id     | true     | number          |
+| user        | true     | [IUser](#IUser) |
 
 ## IUpdateUserAdded
 
-| Key         | Required | Type         |
-| ----------- | -------- | ------------ |
-| update_type | true     | 'user_added' |
-| timestamp   | true     | number       |
-| chat_id     | true     | number       |
-| user_id     | true     | number       |
-| inviter_id  | true     | number       |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| update_type | true     | 'user_added'    |
+| timestamp   | true     | number          |
+| chat_id     | true     | number          |
+| user        | true     | [IUser](#IUser) |
+| inviter_id  | true     | number          |
 
 ## IUpdateUserRemoved
 
-| Key         | Required | Type           |
-| ----------- | -------- | -------------- |
-| update_type | true     | 'user_removed' |
-| timestamp   | true     | number         |
-| chat_id     | true     | number         |
-| user_id     | true     | number         |
-| admin_id    | true     | number         |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| update_type | true     | 'user_removed'  |
+| timestamp   | true     | number          |
+| chat_id     | true     | number          |
+| user        | true     | [IUser](#IUser) |
+| admin_id    | true     | number          |
 
 ## IUpdateBotStarted
 
-| Key         | Required | Type          |
-| ----------- | -------- | ------------- |
-| update_type | true     | 'bot_started' |
-| timestamp   | true     | number        |
-| chat_id     | true     | number        |
-| user_id     | true     | number        |
+| Key         | Required | Type            |
+| ----------- | -------- | --------------- |
+| update_type | true     | 'bot_started'   |
+| timestamp   | true     | number          |
+| chat_id     | true     | number          |
+| user        | true     | [IUser](#IUser) |
 
 ## IUpdateChatTitleChanged
 
@@ -424,7 +429,7 @@ This object can contain any *string* key with *number* value.
 | update_type | true     | 'chat_title_changed' |
 | timestamp   | true     | number               |
 | chat_id     | true     | number               |
-| user_id     | true     | number               |
+| user        | true     | [IUser](#IUser)      |
 | title       | true     | string               |
 
 [payload]: #IAttachmentInlineKeyboardPayload

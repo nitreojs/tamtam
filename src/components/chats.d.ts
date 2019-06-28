@@ -1,8 +1,6 @@
-import * as Params from "../typings/params";
-import * as Responses from "../typings/responses";
+import * as Params from "../../typings/params";
+import * as Responses from "../../typings/responses";
 import API from "./api";
-
-type Action = "typing_on" | "typing_off" | "sending_photo" | "sending_video" | "sending_audio" | "mark_seen";
 
 declare class Chats {
   private api: API;
@@ -15,7 +13,7 @@ declare class Chats {
 
   public getChats(params?: Params.IChatsGetChatsParams): Promise<Responses.IChatsGetChatsResponse>;
 
-  public sendAction(chatId: number, action: Action): Promise<Responses.IChatsSendActionResponse>;
+  public sendAction(params: Params.IChatsSendActionParams): Promise<Responses.IChatsSendActionResponse>;
 
   public getChatMembership(chatId: number): Promise<Responses.IChatsGetChatMembershipResponse>;
 
@@ -25,9 +23,9 @@ declare class Chats {
     Responses.IChatsGetMembersResponse
   >;
 
-  public addMembers(chatId: number, userIds: Array<number> | number): Promise<Responses.IChatsAddMembersResponse>;
+  public addMembers(params: Params.IChatsAddMembersParams): Promise<Responses.IChatsAddMembersResponse>;
 
-  public removeMember(chatId: number, userId: number): Promise<Responses.IChatsRemoveMemberResponse>;
+  public removeMember(params: Params.IChatsRemoveMemberParams): Promise<Responses.IChatsRemoveMemberResponse>;
 }
 
 export = Chats;

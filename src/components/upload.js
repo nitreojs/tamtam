@@ -3,16 +3,14 @@ class Upload {
     this.api = api;
   }
 
-  async getUrl(type = 'photo') {
-    let response = await this.api.request({
+  getUrl(type = 'photo') {
+    return this.api.request({
       httpMethod: 'POST',
-      method: 'uploads',
+      apiMethod: 'uploads',
       query: {
         type,
       },
     });
-
-    return response;
   }
 }
 

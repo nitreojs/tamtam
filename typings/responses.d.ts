@@ -3,7 +3,7 @@ import {
   Attachment,
   IBotCommand,
   IMessage,
-  IMessageSender,
+  IUser,
   ISubscription,
   ISuccess,
   Update,
@@ -165,7 +165,7 @@ export interface ILink {
   /**
    * User sent this message
    */
-  sender: IMessageSender;
+  sender: IUser;
 
   /**
    * Chat where message was originally posted

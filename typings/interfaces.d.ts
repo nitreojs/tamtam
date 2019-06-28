@@ -92,7 +92,15 @@ interface IAttachmentVideo {
 }
 
 interface IAttachmentVideoPayload {
+  /**
+   * Unique identifier of media attachment
+   */
   id: number;
+
+  /**
+   * Use `token` along with `id` in case when you are trying to reuse the same attachment in other message
+   */
+  token: string;
 }
 
 interface IAttachmentAudio {
@@ -102,7 +110,15 @@ interface IAttachmentAudio {
 }
 
 interface IAttachmentAudioPayload {
+  /**
+   * Unique identifier of media attachment
+   */
   id: number;
+
+  /**
+   * Use `token` along with `id` in case when you are trying to reuse the same attachment in other message
+   */
+  token: string;
 }
 
 interface IAttachmentFile {
@@ -112,7 +128,27 @@ interface IAttachmentFile {
 }
 
 interface IAttachmentFilePayload {
+  /**
+   * Uploaded file name
+   */
+  size: number;
+
+  /**
+   * File size in bytes
+   */
+  filename: string;
+
+  /**
+   * DEPRECATED
+   *
+   * Uploaded file unique identifier
+   */
   fileId: number;
+
+  /**
+   * Use `token` along with `fileId` in case when you are trying to reuse the same attachment in other message
+   */
+  token: string;
 }
 
 interface IAttachmentContact {
@@ -169,7 +205,7 @@ interface IAttachmentInlineKeyboardPayload {
   buttons: Array<Array<Button>>;
 }
 
-interface IMessageSender {
+interface IUser {
   /**
    * Users identifier
    */
@@ -248,7 +284,7 @@ interface IUpdateMessageCallbackCallback {
   /**
    * User who pressed the button
    */
-  user: IMessageSender;
+  user: IUser;
 }
 
 interface IUpdateMessageCallback {
@@ -413,7 +449,7 @@ interface IUpdateBotStarted {
   /**
    * User pressed the "Start" button
    */
-  user_id: number;
+  user: IUser;
 }
 
 interface IUpdateChatTitleChanged {
@@ -432,7 +468,7 @@ interface IUpdateChatTitleChanged {
   /**
    * User who changed title
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * New title
@@ -454,7 +490,7 @@ interface IMessageCallback {
   /**
    * User who called the callback
    */
-  user: IMessageSender;
+  user: IUser;
 
   /**
    * Button payload
@@ -556,7 +592,7 @@ export interface IMessage {
   /**
    * User that sent this message. Can be null if message has been posted on behalf of a channel
    */
-  sender?: IMessageSender;
+  sender?: IUser;
 
   /**
    * Message recipient. Could be user or chat
@@ -593,7 +629,7 @@ export interface IMessageCreatedContext {
   /**
    * User that sent this message. Can be null if message has been posted on behalf of a channel
    */
-  sender?: IMessageSender;
+  sender?: IUser;
 
   /**
    * Message recipient. Could be user or chat
@@ -640,7 +676,7 @@ export interface IMessageCallbackContext {
   /**
    * User that sent this message. Can be null if message has been posted on behalf of a channel
    */
-  sender: IMessageSender;
+  sender: IUser;
 
   /**
    * Message recipient. Could be user or chat
@@ -741,9 +777,9 @@ export interface IUserAddedContext {
   chatId: number;
 
   /**
-   * User added to chat
+   * User who was added to chat
    */
-  userId: number;
+  user: IUser;
 
   /**
    * User who added user to chat
@@ -773,9 +809,9 @@ export interface IUserRemovedContext {
   chatId: number;
 
   /**
-   * User removed from chat
+   * User who was removed from chat
    */
-  userId: number;
+  user: IUser;
 
   /**
    * Administrator who removed user from chat
@@ -797,7 +833,7 @@ export interface IBotStartedContext {
   /**
    * User who pressed the "Start" button
    */
-  userId: number;
+  user: IUser;
 
   /**
    * Timestamp
@@ -817,9 +853,9 @@ export interface IBotAddedContext {
   chatId: number;
 
   /**
-   * User ID who was added bot to chat
+   * User who added bot to chat
    */
-  userId: number;
+  user: IUser;
 
   /**
    * Timestamp
@@ -839,9 +875,9 @@ export interface IBotRemovedContext {
   chatId: number;
 
   /**
-   * User ID who removed bot from chat
+   * User who removed bot from chat
    */
-  userId: number;
+  user: IUser;
 
   /**
    * Timestamp
@@ -851,9 +887,10 @@ export interface IBotRemovedContext {
 
 export type ChatType = "dialog" | "chat" | "channel";
 export type Button = IButtonCallback | IButtonLink | IButtonRequestContact | IButtonRequestGeoLocation;
-export type Context = IMessageCreatedContext | IMessageCallbackContext | IChatTitleChangedContext
-  | IMessageEditedContext | IUserAddedContext | IMessageRemovedContext
-  | IBotStartedContext;
+export type Context = IMessageCreatedContext | IMessageEditedContext | IMessageRemovedContext
+  | IMessageCallbackContext | IChatTitleChangedContext | IUserAddedContext
+  | IUserRemovedContext | IBotStartedContext | IBotAddedContext
+  | IBotRemovedContext;
 export type Attachment = IAttachmentAudio | IAttachmentContact | IAttachmentFile
   | IAttachmentImage | IAttachmentInlineKeyboard | IAttachmentSticker
   | IAttachmentVideo;

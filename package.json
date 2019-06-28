@@ -1,7 +1,7 @@
 {
   "name": "tamtam",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Powerful Node.js package which allows you to easily work with TamTam API",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,12 +12,13 @@
   },
   "keywords": [
     "tamtam",
-    "api"
+    "api",
+    "node",
+    "tamtam dev"
   ],
   "files": [
     "lib",
-    "typings",
-    "components"
+    "typings"
   ],
   "author": "nitrojs",
   "license": "MIT",

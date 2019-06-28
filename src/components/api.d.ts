@@ -1,4 +1,4 @@
-import * as Params from "../typings/params";
+import * as Params from "../../typings/params";
 import Bots from "./bots";
 import Chats from "./chats";
 import Messages from "./messages";

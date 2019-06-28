@@ -313,8 +313,8 @@ class ChatTitleChanged extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get title() {
@@ -336,10 +336,10 @@ class ChatTitleChanged extends Context {
   [inspect.custom](depth, options) {
     let { name } = this.constructor;
 
-    let { user_id: userId, chat_id: chatId, ...params } = this.payload;
+    let { user, chat_id: chatId, ...params } = this.payload;
 
     let payloadToInspect = {
-      userId,
+      user,
       chatId,
       ...params,
     };
@@ -362,8 +362,8 @@ class UserAddedContext extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get inviterId() {
@@ -387,7 +387,7 @@ class UserAddedContext extends Context {
 
     let payloadToInspect = {
       chatId: this.payload.chat_id,
-      userId: this.payload.user_id,
+      user: this.payload.user,
       inviterId: this.payload.inviter_id,
       timestamp: this.payload.timestamp,
     };
@@ -410,8 +410,8 @@ class UserRemovedContext extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get adminId() {
@@ -435,7 +435,7 @@ class UserRemovedContext extends Context {
 
     let payloadToInspect = {
       chatId: this.payload.chat_id,
-      userId: this.payload.user_id,
+      user: this.payload.user,
       adminId: this.payload.admin_id,
       timestamp: this.payload.timestamp,
     };
@@ -458,8 +458,8 @@ class BotStartedContext extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get timestamp() {
@@ -479,7 +479,7 @@ class BotStartedContext extends Context {
 
     let payloadToInspect = {
       chatId: this.payload.chat_id,
-      userId: this.payload.user_id,
+      user: this.payload.user,
       timestamp: this.payload.timestamp,
     };
 
@@ -501,8 +501,8 @@ class BotAddedContext extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get timestamp() {
@@ -522,7 +522,7 @@ class BotAddedContext extends Context {
 
     let payloadToInspect = {
       chatId: this.payload.chat_id,
-      userId: this.payload.user_id,
+      user: this.payload.user,
       timestamp: this.payload.timestamp,
     };
 
@@ -544,8 +544,8 @@ class BotRemovedContext extends Context {
     return this.payload.chat_id;
   }
 
-  get userId() {
-    return this.payload.user_id;
+  get user() {
+    return this.payload.user;
   }
 
   get timestamp() {
@@ -557,7 +557,7 @@ class BotRemovedContext extends Context {
 
     let payloadToInspect = {
       chatId: this.payload.chat_id,
-      userId: this.payload.user_id,
+      user: this.payload.user,
       timestamp: this.payload.timestamp,
     };
 

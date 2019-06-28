@@ -1,5 +1,5 @@
-import * as Params from "../typings/params";
-import * as Responses from "../typings/responses";
+import * as Params from "../../typings/params";
+import * as Responses from "../../typings/responses";
 import TamTam from "./tamtam";
 
 declare class Context {

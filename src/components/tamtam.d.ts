@@ -1,4 +1,4 @@
-import * as Params from "../typings/params";
+import * as Params from "../../typings/params";
 import API from "./api";
 import Updates from "./updates";
 

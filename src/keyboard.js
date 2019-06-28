@@ -1,6 +1,6 @@
 let { inspect } = require('util');
 
-let TamTamError = require('../components/tterror');
+let TamTamError = require('../src/components/tterror');
 
 class Keyboard {
   constructor() {

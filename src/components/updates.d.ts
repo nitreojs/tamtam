@@ -1,4 +1,4 @@
-import * as Params from "../typings/params";
+import * as Params from "../../typings/params";
 
 import {
   Context,
@@ -12,12 +12,12 @@ import {
   IMessageRemovedContext,
   IUserAddedContext,
   IUserRemovedContext,
-} from "../typings/interfaces";
+} from "../../typings/interfaces";
 
 import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
 import { Response, Request } from "express";
 
-type Handler<T = Context> = Middleware<T>;
+type Handler<T = Context> = (context: T, next: NextMiddleware) => any;
 type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Promise<MiddlewareReturn>;
 
 /**

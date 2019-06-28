@@ -26,14 +26,14 @@ class API {
   async request(params = {}) {
     let {
       httpMethod = 'GET',
-      method,
+      apiMethod,
       body = {},
       query = {},
     } = params;
 
-    let url = `https://botapi.tamtam.chat/${method}`;
+    let url = `https://botapi.tamtam.chat/${apiMethod}`;
 
-    if (method === 'chats' && 'chat_id' in query) {
+    if (apiMethod === 'chats' && 'chat_id' in query) {
       url += `/${query.chat_id}${query.method ? '/' + query.method : ''}`;
     }
 
@@ -59,15 +59,13 @@ class API {
     return response;
   }
 
-  async call(method, { query, body, httpMethod }) {
-    let response = await this.request({
+  async call(apiMethod, { query, body, httpMethod }) {
+    return this.request({
       httpMethod,
-      method,
+      apiMethod,
       query,
       body,
     });
-
-    return response;
   }
 }
 

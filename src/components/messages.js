@@ -3,66 +3,56 @@ class Messages {
     this.api = api;
   }
 
-  async get(params = {}) {
-    let response = await this.api.request({
-      method: 'messages',
+  get(params = {}) {
+    return this.api.request({
+      apiMethod: 'messages',
       body: JSON.stringify(params),
     });
-
-    return response;
   }
 
-  async send(params) {
+  send(params) {
     let query = {};
     if (params.user_id) query.user_id = params.user_id;
     if (params.chat_id) query.chat_id = params.chat_id;
 
-    let response = await this.api.request({
+    return this.api.request({
       httpMethod: 'POST',
-      method: 'messages',
+      apiMethod: 'messages',
       query,
       body: JSON.stringify(params),
     });
-
-    return response;
   }
 
-  async edit(messageId, params) {
-    let response = await this.api.request({
+  edit(messageId, params) {
+    return this.api.request({
       httpMethod: 'PUT',
-      method: 'messages',
+      apiMethod: 'messages',
       query: {
         message_id: messageId,
       },
       body: JSON.stringify(params),
     });
-
-    return response;
   }
 
-  async delete(messageId) {
-    let response = await this.api.request({
+  delete(messageId) {
+    return this.api.request({
       httpMethod: 'DELETE',
-      method: 'messages',
+      apiMethod: 'messages',
       query: {
         message_id: messageId,
       },
     });
-
-    return response;
   }
 
-  async answerCallback(callbackId, params) {
-    let response = await this.api.request({
+  answerCallback(callbackId, params = {}) {
+    return this.api.request({
       httpMethod: 'POST',
-      method: 'answers',
+      apiMethod: 'answers',
       query: {
         callback_id: callbackId,
       },
       body: JSON.stringify(params),
     });
-
-    return response;
   }
 }
 
