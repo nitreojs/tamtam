@@ -1,5 +1,7 @@
+import { IErrorParams } from "../../typings/params";
+
 declare class TamTamError extends Error {
-  constructor(params: { code: string; message: string; });
+  constructor(options: IErrorParams);
 }
 
 export = TamTamError;

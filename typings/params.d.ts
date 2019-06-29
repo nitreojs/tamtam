@@ -6,7 +6,7 @@ import {
   IUser,
   IParamsMessage,
   IPhoto,
-} from './interfaces';
+} from "./interfaces";
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
 type UpdateType = "message_callback" | "message_created" | "message_edited"
@@ -589,4 +589,10 @@ export interface IChatsRemoveMemberParams {
    * User ID to remove from chat
    */
   userId: number;
+}
+
+export interface IErrorParams {
+  code: string;
+
+  message: string;
 }

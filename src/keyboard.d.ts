@@ -5,7 +5,12 @@ import {
   IButtonRequestContact,
   IButtonRequestGeoLocation,
 } from "../typings/interfaces";
-import * as Params from "../typings/params";
+import {
+  IKeyboardCallbackButtonParams,
+  IKeyboardGeoButtonParams,
+  IKeyboardContactButtonParams,
+  IKeyboardLinkButtonParams,
+} from "../typings/params";
 
 interface IKeyboardKeyboardPayload {
   buttons: Array<Button>;
@@ -41,22 +46,22 @@ declare class Keyboard {
   /**
    * Generate callback button
    */
-  public static callbackButton(params: Params.IKeyboardCallbackButtonParams): IButtonCallback;
+  public static callbackButton(params: IKeyboardCallbackButtonParams): IButtonCallback;
 
   /**
    * Generate request geolocation button
    */
-  public static geoButton(params: Params.IKeyboardGeoButtonParams): IButtonRequestGeoLocation;
+  public static geoButton(params: IKeyboardGeoButtonParams): IButtonRequestGeoLocation;
 
   /**
    * Generate request contact button
    */
-  public static contactButton(params: Params.IKeyboardContactButtonParams): IButtonRequestContact;
+  public static contactButton(params: IKeyboardContactButtonParams): IButtonRequestContact;
 
   /**
    * Generate link button
    */
-  public static linkButton(params: Params.IKeyboardLinkButtonParams): IButtonLink;
+  public static linkButton(params: IKeyboardLinkButtonParams): IButtonLink;
 }
 
 export = Keyboard;

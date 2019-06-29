@@ -1,5 +1,3 @@
-import * as Params from "../../typings/params";
-
 import {
   Context,
   IBotStartedContext,
@@ -14,6 +12,8 @@ import {
   IUserRemovedContext,
 } from "../../typings/interfaces";
 
+import { ITamTamParams, UpdateType } from "../../typings/params";
+
 import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
 import { Response, Request } from "express";
 
@@ -26,7 +26,7 @@ type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Pr
  * Code provided by @negezor
  */
 declare class Updates {
-  constructor(tamtam: Params.ITamTamParams);
+  constructor(tamtam: ITamTamParams);
 
   /**
    * Returns webhook callback like http[s] or express
@@ -41,7 +41,7 @@ declare class Updates {
   /**
    * Start polling
    */
-  public startPolling(callback?: () => void): Promise<void>;
+  public startPolling(): Promise<void>;
 
   /**
    * A handler that is called when handlers are not found
@@ -71,7 +71,7 @@ declare class Updates {
 
   public on(events: "chat_title_changed", handler: Handler<IChatTitleChangedContext>): this;
 
-  public on(events: Array<Params.UpdateType> | Params.UpdateType, handler: Handler): this;
+  public on(events: Array<UpdateType> | UpdateType, handler: Handler): this;
 
   public stopPolling(): this;
 }

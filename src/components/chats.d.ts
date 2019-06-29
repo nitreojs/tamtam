@@ -1,31 +1,48 @@
-import * as Params from "../../typings/params";
-import * as Responses from "../../typings/responses";
 import API from "./api";
+
+import {
+  IChatsEditParams,
+  IChatsGetChatsParams,
+  IChatsSendActionParams,
+  IChatsGetMembersParams,
+  IChatsAddMembersParams,
+  IChatsRemoveMemberParams,
+} from "../../typings/params";
+
+import {
+  IChatsGetResponse,
+  IChatsEditResponse,
+  IChatsGetChatsResponse,
+  IChatsSendActionResponse,
+  IChatsGetChatMembershipResponse,
+  IChatsLeaveResponse,
+  IChatsGetMembersResponse,
+  IChatsAddMembersResponse,
+  IChatsRemoveMemberResponse,
+} from "../../typings/responses";
 
 declare class Chats {
   private api: API;
 
   constructor(api: API);
 
-  public get(chatId: number): Promise<Responses.IChatsGetResponse>;
+  public get(chatId: number): Promise<IChatsGetResponse>;
 
-  public edit(chatId: number, params?: Params.IChatsEditParams): Promise<Responses.IChatsEditResponse>;
+  public edit(chatId: number, params?: IChatsEditParams): Promise<IChatsEditResponse>;
 
-  public getChats(params?: Params.IChatsGetChatsParams): Promise<Responses.IChatsGetChatsResponse>;
+  public getChats(params?: IChatsGetChatsParams): Promise<IChatsGetChatsResponse>;
 
-  public sendAction(params: Params.IChatsSendActionParams): Promise<Responses.IChatsSendActionResponse>;
+  public sendAction(params: IChatsSendActionParams): Promise<IChatsSendActionResponse>;
 
-  public getChatMembership(chatId: number): Promise<Responses.IChatsGetChatMembershipResponse>;
+  public getChatMembership(chatId: number): Promise<IChatsGetChatMembershipResponse>;
 
-  public leave(chatId: number): Promise<Responses.IChatsLeaveResponse>;
+  public leave(chatId: number): Promise<IChatsLeaveResponse>;
 
-  public getMembers(chatId: number, params?: Params.IChatsGetMembersParams): Promise<
-    Responses.IChatsGetMembersResponse
-  >;
+  public getMembers(chatId: number, params?: IChatsGetMembersParams): Promise<IChatsGetMembersResponse>;
 
-  public addMembers(params: Params.IChatsAddMembersParams): Promise<Responses.IChatsAddMembersResponse>;
+  public addMembers(params: IChatsAddMembersParams): Promise<IChatsAddMembersResponse>;
 
-  public removeMember(params: Params.IChatsRemoveMemberParams): Promise<Responses.IChatsRemoveMemberResponse>;
+  public removeMember(params: IChatsRemoveMemberParams): Promise<IChatsRemoveMemberResponse>;
 }
 
 export = Chats;

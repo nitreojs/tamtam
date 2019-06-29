@@ -1,4 +1,9 @@
-import * as Params from "../typings/params";
+import {
+  IKeyboardCallbackButtonParams,
+  IKeyboardGeoButtonParams,
+  IKeyboardContactButtonParams,
+  IKeyboardLinkButtonParams,
+} from "../typings/params";
 
 declare class ChainKeyboard {
   /**
@@ -21,22 +26,22 @@ declare class ChainKeyboard {
   /**
    * Add callback button to the current row
    */
-  public callbackButton(params: Params.IKeyboardCallbackButtonParams): this;
+  public callbackButton(params: IKeyboardCallbackButtonParams): this;
 
   /**
    * Add geolocation request button to the current row
    */
-  public geoButton(params: Params.IKeyboardGeoButtonParams): this;
+  public geoButton(params: IKeyboardGeoButtonParams): this;
 
   /**
    * Add contact request button to the current row
    */
-  public contactButton(params: Params.IKeyboardContactButtonParams): this;
+  public contactButton(params: IKeyboardContactButtonParams): this;
 
   /**
    * Add link button to the current row
    */
-  public linkButton(params: Params.IKeyboardLinkButtonParams): this;
+  public linkButton(params: IKeyboardLinkButtonParams): this;
 
   /**
    * Add row

@@ -45,13 +45,6 @@ class Updates {
   }
 
   use(...middlewares) {
-    if (!Array.isArray(middlewares)) {
-      throw new TamTamError({
-        code: 'errors.middlewares',
-        message: 'Middlewares must be an array of functions or a function',
-      });
-    }
-
     middlewares.forEach((middleware) => {
       if (typeof middleware !== 'function') {
         throw new TamTamError({
@@ -68,7 +61,7 @@ class Updates {
     return this;
   }
 
-  async startPolling(callback = () => {}) {
+  async startPolling() {
     if (this.isStarted) return;
 
     if (this.events.length === 0) {
@@ -79,8 +72,6 @@ class Updates {
     }
 
     this.isStarted = true;
-
-    callback();
 
     await this.startFetchLoop();
   }

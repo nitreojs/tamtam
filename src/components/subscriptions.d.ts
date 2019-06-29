@@ -1,21 +1,31 @@
-import * as Params from "../../typings/params";
-import * as Responses from "../../typings/responses";
 import API from "./api";
+
+import {
+  ISubscriptionsSubscribeParams,
+  ISubscriptionsGetUpdatesParams,
+} from "../../typings/params";
+
+import {
+  ISubscriptionsGetResponse,
+  ISubscriptionsSubscribeResponse,
+  ISubscriptionsUnsubscribeResponse,
+  ISubscriptionsGetUpdatesResponse,
+} from "../../typings/responses";
 
 export default class Subscriptions {
   private api: API;
 
   constructor(api: API);
 
-  public get(): Promise<Responses.ISubscriptionsGetResponse>;
+  public get(): Promise<ISubscriptionsGetResponse>;
 
-  public subscribe(url: string, params?: Params.ISubscriptionsSubscribeParams): Promise<
-    Responses.ISubscriptionsSubscribeResponse
+  public subscribe(url: string, params?: ISubscriptionsSubscribeParams): Promise<
+    ISubscriptionsSubscribeResponse
   >;
 
-  public unsubscribe(url: string): Promise<Responses.ISubscriptionsUnsubscribeResponse>;
+  public unsubscribe(url: string): Promise<ISubscriptionsUnsubscribeResponse>;
 
-  public getUpdates(params?: Params.ISubscriptionsGetUpdatesParams): Promise<
-    Responses.ISubscriptionsGetUpdatesResponse
+  public getUpdates(params?: ISubscriptionsGetUpdatesParams): Promise<
+    ISubscriptionsGetUpdatesResponse
   >;
 }

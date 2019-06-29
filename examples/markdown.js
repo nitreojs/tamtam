@@ -8,7 +8,7 @@ tamtam.updates.on('message_created', async (ctx) => {
   await ctx.reply(`Hi there, ${Markdown.bold(ctx.sender.name)}!`);
 });
 
-tamtam.updates.startPolling();
-
-// eslint-disable-next-line no-console
-console.log('Bot started');
+tamtam.updates.startPolling().then(() => {
+  // eslint-disable-next-line no-console
+  console.log('Bot started');
+});

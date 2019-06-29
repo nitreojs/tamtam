@@ -13,6 +13,7 @@ tamtam.updates.on('message_created', async (ctx) => {
  * on the basis of events that were
  * passed to "updates.on"
  */
-
-// eslint-disable-next-line no-console
-tamtam.updates.startPolling(() => console.log('Bot started.'));
+tamtam.updates.startPolling().then(() => {
+  // eslint-disable-next-line no-console
+  console.log('Bot started');
+});
