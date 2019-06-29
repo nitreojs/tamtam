@@ -2,7 +2,7 @@ let middlewareIo = require('middleware-io');
 let debug = require('debug')('tamtam:updates');
 
 let TamTamError = require('./tterror');
-let Contexts = require('./contexts');
+let Contexts = require('../contexts');
 
 let contexts = {
   message_callback: Contexts.MessageCallbackContext,
