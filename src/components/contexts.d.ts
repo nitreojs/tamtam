@@ -1,7 +1,15 @@
 import * as Params from "../../typings/params";
 import * as Responses from "../../typings/responses";
 import TamTam from "./tamtam";
-import { Attachment, IUser, IMessageRecipient, IMessageBody, ChatType, AttachmentType, IMessage } from "../../typings/interfaces";
+import {
+  Attachment,
+  IUser,
+  IMessageRecipient,
+  IMessageBody,
+  ChatType,
+  AttachmentType,
+  IMessage,
+} from "../../typings/interfaces";
 
 declare class Context {
   constructor(tamtam: TamTam, type: string);
@@ -92,9 +100,9 @@ declare class MessageEditedContext extends Context {
 
   constructor(tamtam: TamTam, payload: Params.IMessageEditedContext);
 
-  hasAttachments(type?: AttachmentType): boolean;
+  public hasAttachments(type?: AttachmentType): boolean;
 
-  getAttachments(type?: AttachmentType): Array<Attachment>;
+  public getAttachments(type?: AttachmentType): Array<Attachment>;
 
   public is(types: Params.UpdateType | Array<Params.UpdateType>): boolean;
 

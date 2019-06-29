@@ -3,7 +3,6 @@ import * as Responses from './responses';
 
 type LinkType = "forward" | "reply";
 type ButtonIntent = "positive" | "negative" | "default";
-type AttachmentType = "audio" | "video" | "file" | "image" | "contact" | "sticker" | "share" | "location" | "inline_keyboard";
 
 interface IPhotoToken {
   /**
@@ -899,6 +898,9 @@ export interface IBotRemovedContext {
   timestamp: number;
 }
 
+export type AttachmentType = "audio" | "video" | "file"
+  | "image" | "contact" | "sticker"
+  | "share" | "location" | "inline_keyboard";
 export type ChatType = "dialog" | "chat" | "channel";
 export type Button = IButtonCallback | IButtonLink | IButtonRequestContact | IButtonRequestGeoLocation;
 export type Context = IMessageCreatedContext | IMessageEditedContext | IMessageRemovedContext
