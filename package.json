@@ -1,8 +1,8 @@
 {
   "name": "tamtam",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Powerful Node.js package which allows you to easily work with TamTam API",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
