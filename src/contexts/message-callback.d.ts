@@ -5,7 +5,7 @@ import TamTam from "../components/tamtam";
 import {
   UpdateType,
   IMessageCallbackContext,
-  IMessagesSendParams
+  IMessagesSendParams,
 } from "../../typings/params";
 
 import { IMessagesAnswerCallbackResponse } from "../../typings/responses";

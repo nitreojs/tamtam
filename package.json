@@ -17,7 +17,7 @@
     "tamtam dev"
   ],
   "files": [
-    "lib",
+    "src",
     "typings"
   ],
   "author": "nitrojs",
