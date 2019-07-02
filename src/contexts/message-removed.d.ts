@@ -1,8 +1,8 @@
-import Context from './context';
+import Context from "./context";
 
-import TamTam from '../components/tamtam';
+import TamTam from "../components/tamtam";
 
-import { IMessageRemovedContext, UpdateType } from '../../typings/params';
+import { IMessageRemovedContext, UpdateType } from "../../typings/params";
 
 declare class MessageRemovedContext extends Context {
   public messageId: string;

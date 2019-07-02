@@ -5,6 +5,10 @@ type LinkType = "forward" | "reply";
 type ButtonIntent = "positive" | "negative" | "default";
 
 interface IPhotoToken {
+  [key: string]: IPhotoTokenParams;
+}
+
+interface IPhotoTokenParams {
   /**
    * Encoded information of uploaded image
    */
@@ -222,7 +226,7 @@ interface IUser {
   /**
    * Users identifier
    */
-  userId: number;
+  id: number;
 
   /**
    * Users visible name
@@ -731,7 +735,7 @@ export interface IChatTitleChangedContext {
   /**
    * Users identifier
    */
-  userId: number;
+  user: IUser;
 
   /**
    * New title

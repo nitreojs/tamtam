@@ -1,3 +1,5 @@
+import { Stream } from "stream";
+
 import {
   Attachment,
   IBotCommand,
@@ -7,6 +9,8 @@ import {
   IParamsMessage,
   IPhoto,
 } from "./interfaces";
+
+import { UploadType } from "../src/components/upload";
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE" | "PUT";
 type UpdateType = "message_callback" | "message_created" | "message_edited"
@@ -373,9 +377,9 @@ export interface IUserAddedContext {
   chat_id: number;
 
   /**
-   * User added to chat
+   * User removed from to chat
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * User who was added user to chat
@@ -402,7 +406,7 @@ export interface IUserRemovedContext {
   /**
    * User who was removed from chat
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * Administrator who removed user from chat
@@ -449,9 +453,9 @@ export interface IBotAddedContext {
   chat_id: number;
 
   /**
-   * User ID who added bot to chat
+   * User who added bot to chat
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * Unix-time when event has occured
@@ -471,9 +475,9 @@ export interface IBotRemovedContext {
   chat_id: number;
 
   /**
-   * User ID who removed bot from chat
+   * User who removed bot from chat
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * Unix-time when event has occured
@@ -495,7 +499,7 @@ export interface IChatTitleChangedContext {
   /**
    * User who changed title
    */
-  user_id: number;
+  user: IUser;
 
   /**
    * New title
@@ -588,11 +592,17 @@ export interface IChatsRemoveMemberParams {
   /**
    * User ID to remove from chat
    */
-  userId: number;
+  user: IUser;
 }
 
 export interface IErrorParams {
   code: string;
 
   message: string;
+}
+
+export interface IUploadsUploadParams {
+  type: UploadType;
+
+  input: Stream | Buffer | string;
 }

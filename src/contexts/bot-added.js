@@ -14,7 +14,14 @@ class BotAddedContext extends Context {
   }
 
   get user() {
-    return this.payload.user;
+    let { user_id: id, ...user } = this.payload.user;
+
+    let result = {
+      id,
+      ...user,
+    };
+
+    return result;
   }
 
   get timestamp() {
@@ -23,7 +30,7 @@ class BotAddedContext extends Context {
 
   send(text, params = {}) {
     return this.tamtam.api.messages.send({
-      chat_id: this.payload.chat_id,
+      chat_id: this.chatId,
       text,
       ...params,
     });
@@ -33,9 +40,9 @@ class BotAddedContext extends Context {
     let { name } = this.constructor;
 
     let payloadToInspect = {
-      chatId: this.payload.chat_id,
-      user: this.payload.user,
-      timestamp: this.payload.timestamp,
+      chatId: this.chatId,
+      user: this.user,
+      timestamp: this.timestamp,
     };
 
     let payload = inspect(payloadToInspect, { ...options, compact: false });

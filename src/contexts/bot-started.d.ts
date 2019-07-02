@@ -1,14 +1,14 @@
-import Context from './context';
+import Context from "./context";
 
-import TamTam from '../components/tamtam';
+import TamTam from "../components/tamtam";
 
 import {
   IBotStartedContext,
   UpdateType,
   IMessagesSendParams,
-} from '../../typings/params';
+} from "../../typings/params";
 
-import { IUser } from '../../typings/interfaces';
+import { IUser } from "../../typings/interfaces";
 
 declare class BotStartedContext extends Context {
   public chatId: number;

@@ -21,8 +21,8 @@ class MessageRemovedContext extends Context {
     let { name } = this.constructor;
 
     let payloadToInspect = {
-      messageId: this.payload.message_id,
-      timestamp: this.payload.timestamp,
+      messageId: this.messageId,
+      timestamp: this.timestamp,
     };
 
     let payload = inspect(payloadToInspect, { ...options, compact: false });

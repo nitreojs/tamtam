@@ -14,7 +14,14 @@ class UserRemovedContext extends Context {
   }
 
   get user() {
-    return this.payload.user;
+    let { user_id: id, ...user } = this.payload.user;
+
+    let result = {
+      id,
+      ...user,
+    };
+
+    return result;
   }
 
   get adminId() {
@@ -27,7 +34,7 @@ class UserRemovedContext extends Context {
 
   send(text, params = {}) {
     return this.tamtam.api.messages.send({
-      chat_id: this.payload.chat_id,
+      chat_id: this.chatId,
       text,
       ...params,
     });
@@ -37,10 +44,10 @@ class UserRemovedContext extends Context {
     let { name } = this.constructor;
 
     let payloadToInspect = {
-      chatId: this.payload.chat_id,
-      user: this.payload.user,
-      adminId: this.payload.admin_id,
-      timestamp: this.payload.timestamp,
+      chatId: this.chatId,
+      user: this.user,
+      adminId: this.adminId,
+      timestamp: this.timestamp,
     };
 
     let payload = inspect(payloadToInspect, { ...options, compact: false });

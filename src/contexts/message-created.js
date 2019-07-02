@@ -14,7 +14,7 @@ class MessageCreatedContext extends Context {
   }
 
   get text() {
-    return this.payload.message.body.text || '';
+    return this.body.text || '';
   }
 
   get senderId() {
@@ -34,14 +34,14 @@ class MessageCreatedContext extends Context {
   }
 
   get attachments() {
-    return this.payload.message.body.attachments || null;
+    return this.body.attachments || null;
   }
 
   get sender() {
     let { sender } = this.payload.message;
 
     let result = {
-      userId: sender.user_id,
+      id: sender.user_id,
       ...sender,
     };
 
@@ -98,7 +98,7 @@ class MessageCreatedContext extends Context {
 
   send(text, params = {}) {
     return this.tamtam.api.messages.send({
-      chat_id: this.payload.message.recipient.chat_id,
+      chat_id: this.recipient.chatId,
       text,
       ...params,
     });
@@ -106,12 +106,23 @@ class MessageCreatedContext extends Context {
 
   reply(text, params = {}) {
     return this.tamtam.api.messages.send({
-      chat_id: this.payload.message.recipient.chat_id,
+      chat_id: this.recipient.chatId,
       link: {
         type: (params.link ? params.link.type : null) || 'reply',
-        mid: this.payload.message.body.mid,
+        mid: this.id,
       },
       text,
+      ...params,
+    });
+  }
+
+  forward(text, params = {}) {
+    return this.reply(text, {
+      chat_id: this.recipient.chatId,
+      link: {
+        type: 'link' in params ? params.link.type : 'forward',
+        mid: this.id,
+      },
       ...params,
     });
   }

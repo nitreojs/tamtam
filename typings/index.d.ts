@@ -3,14 +3,8 @@ import API from "../src/components/api";
 import ChainKeyboard from "../src/chain-keyboard";
 import Keyboard from "../src/keyboard";
 import Markdown from "../src/markdown";
+import TamTam from "../src/components/tamtam";
 import Updates from "../src/components/updates";
-
-declare class TamTam {
-  public api: API;
-  public updates: Updates;
-
-  constructor(params: ITamTamParams);
-}
 
 export {
   TamTam,

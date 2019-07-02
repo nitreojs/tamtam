@@ -280,7 +280,7 @@ This object can contain any *string* key with *number* value.
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
-| userId   | true     | number |
+| id   | true     | number |
 | name     | true     | string |
 | username | false    | string |
 

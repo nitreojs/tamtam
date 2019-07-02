@@ -138,7 +138,12 @@ class MessageEditedContext extends Context {
 
   forward(text, params = {}) {
     return this.reply(text, {
-      link: 'link' in params ? params.link.type : 'forward',
+      chat_id: this.recipient.chatId,
+      link: {
+        type: 'link' in params ? params.link.type : 'forward',
+        mid: this.id,
+      },
+      ...params,
     });
   }
 

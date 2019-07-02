@@ -55,6 +55,8 @@ declare class MessageCreatedContext extends Context {
   public send(text: string, params?: IMessagesSendParams): Promise<void>;
 
   public reply(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  public forward(text: string, params?: IMessagesSendParams): Promise<void>;
 }
 
 export = MessageCreatedContext;
