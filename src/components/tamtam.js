@@ -7,7 +7,7 @@ let Updates = require('./updates');
  * TamTam
  */
 class TamTam {
-  constructor({ token, version = '0.1.7' } = {}) {
+  constructor({ token, version = '0.1.8' } = {}) {
     this.token = token;
     this.version = version;
 

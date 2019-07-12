@@ -1,5 +1,6 @@
 import * as Params from "./params";
 import * as Responses from "./responses";
+import { UpdateType, IMessagesSendParams } from "./params";
 
 type LinkType = "forward" | "reply";
 type ButtonIntent = "positive" | "negative" | "default";
@@ -97,12 +98,7 @@ interface IAttachmentVideo {
 
 interface IAttachmentVideoPayload {
   /**
-   * Unique identifier of media attachment
-   */
-  id: number;
-
-  /**
-   * Use `token` along with `id` in case when you are trying to reuse the same attachment in other message
+   * Use `token` in case when you are trying to reuse the same attachment in other message
    */
   token: string;
 }
@@ -115,12 +111,7 @@ interface IAttachmentAudio {
 
 interface IAttachmentAudioPayload {
   /**
-   * Unique identifier of media attachment
-   */
-  id: number;
-
-  /**
-   * Use `token` along with `id` in case when you are trying to reuse the same attachment in other message
+   * Use `token` in case when you are trying to reuse the same attachment in other message
    */
   token: string;
 }
@@ -143,14 +134,17 @@ interface IAttachmentFilePayload {
   filename: string;
 
   /**
-   * DEPRECATED
-   *
-   * Uploaded file unique identifier
+   * File url
    */
-  fileId: number;
+  url: string;
 
   /**
-   * Use `token` along with `fileId` in case when you are trying to reuse the same attachment in other message
+   * File identifier
+   */
+  id: number;
+
+  /**
+   * Token is unique uploaded media identifier
    */
   token: string;
 }
@@ -181,10 +175,22 @@ interface IAttachmentContactPayload {
    * Contact phone in VCF format
    */
   vcfPhone?: string | null;
+
+  tamInfo?: IUser;
 }
 
 interface IAttachmentSticker {
   type: "sticker";
+
+  /**
+   * Sticker wigth
+   */
+  width: number;
+
+  /**
+   * Sticker height
+   */
+  height: number;
 
   payload: IAttachmentStickerPayload;
 }
@@ -194,6 +200,11 @@ interface IAttachmentStickerPayload {
    * Sticker code
    */
   code: string;
+
+  /**
+   * Sticker URL
+   */
+  url: string;
 }
 
 interface IAttachmentInlineKeyboard {
@@ -527,9 +538,9 @@ export interface IPhoto {
   token?: string | null;
 
   /**
-   * Tokens were obtained after uploading images
+   * Photo identifier
    */
-  photos?: IPhotoToken | null;
+  id: number;
 }
 
 export interface ILink {
@@ -581,6 +592,11 @@ export interface ISuccess {
    * true if request was successful. false otherwise
    */
   success: boolean;
+
+  /**
+   * Explanatory message if the result is not successful
+   */
+  message: string;
 }
 
 export interface ISubscription {
@@ -639,14 +655,39 @@ export interface IMessage {
 
 export interface IMessageCreatedContext {
   /**
+   * Message identifier
+   */
+  id: string;
+
+  /**
    * Message text
    */
   text?: string | null;
 
   /**
+   * Sender identifier
+   */
+  senderId: number;
+
+  /**
+   * Chat identifier
+   */
+  chatId?: number | null;
+
+  /**
+   * Chat type
+   */
+  chatType?: ChatType | null;
+
+  /**
+   * Message body attachments
+   */
+  attachments?: Array<Attachment> | null;
+
+  /**
    * User that sent this message. Can be null if message has been posted on behalf of a channel
    */
-  sender?: IUser;
+  sender?: IUser | null;
 
   /**
    * Message recipient. Could be user or chat
@@ -669,6 +710,21 @@ export interface IMessageCreatedContext {
   body: IMessageBody;
 
   /**
+   * Is message sent to chat?
+   */
+  isChat: boolean;
+
+  /**
+   * Is message sent to dialog?
+   */
+  isDialog: boolean;
+
+  /**
+   * Is message sent to channel?
+   */
+  isChannel: boolean;
+
+  /**
    * Message staistics. Available only for channels in GET:/messages context
    */
   stat?: IMessageStat | null;
@@ -682,18 +738,70 @@ export interface IMessageCreatedContext {
    * Reply to the created message
    */
   reply(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  /**
+   * Do message have selected attachments?
+   */
+  hasAttachments(type?: AttachmentType): boolean;
+
+  /**
+   * Get attachments with pointed type
+   */
+  getAttachments(type?: AttachmentType): Array<Attachment>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
+
+  /**
+   * Send message to the current chat/dialog/channel
+   */
+  send(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  /**
+   * Reply to the sent message
+   */
+  reply(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  /**
+   * Forward the sent message
+   */
+  forward(text: string, params?: IMessagesSendParams): Promise<void>;
 }
 
 export interface IMessageCallbackContext {
   /**
-   * Message ID
+   * Message identifier
    */
   id: string;
 
   /**
+   * Message text
+   */
+  text?: string | null;
+
+  /**
+   * Sender identifier
+   */
+  senderId: number;
+
+  /**
+   * Chat identifier
+   */
+  chatId?: number | null;
+
+  /**
+   * Chat type
+   */
+  chatType?: ChatType | null;
+
+  /**
+   * Message body attachments
+   */
+  attachments?: Array<Attachment> | null;
+
+  /**
    * User that sent this message. Can be null if message has been posted on behalf of a channel
    */
-  sender: IUser;
+  sender?: IUser | null;
 
   /**
    * Message recipient. Could be user or chat
@@ -706,19 +814,54 @@ export interface IMessageCallbackContext {
   callback: IMessageCallback;
 
   /**
+   * Unix-time when message was created
+   */
+  timestamp: number;
+
+  /**
+   * Forwarder or replied message
+   */
+  link?: ILink | null;
+
+  /**
    * Body of created message. Text + attachments. Could be null if message contains only forwarded message
    */
   body: IMessageBody;
 
   /**
-   * Timestamp
+   * Is message sent to chat?
    */
-  timestamp: number;
+  isChat: boolean;
+
+  /**
+   * Is message sent to dialog?
+   */
+  isDialog: boolean;
+
+  /**
+   * Is message sent to channel?
+   */
+  isChannel: boolean;
+
+  /**
+   * Message staistics. Available only for channels in GET:/messages context
+   */
+  stat?: IMessageStat | null;
 
   /**
    * Send message to the chat where callback was called
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  /**
+   * Reply to the sent message
+   */
+  reply(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  /**
+   * Forward the sent message
+   */
+  forward(text: string, params?: IMessagesSendParams): Promise<void>;
 
   /**
    * Send one-time notification to user
@@ -751,6 +894,8 @@ export interface IChatTitleChangedContext {
    * Send message to the chat where title was changed
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IMessageEditedContext {
@@ -760,19 +905,116 @@ export interface IMessageEditedContext {
   message: IMessage;
 
   /**
-   * Timestamp
+   * Message identifier
+   */
+  id: string;
+
+  /**
+   * Message text
+   */
+  text?: string | null;
+
+  /**
+   * Sender identifier
+   */
+  senderId: number;
+
+  /**
+   * Chat identifier
+   */
+  chatId?: number | null;
+
+  /**
+   * Chat type
+   */
+  chatType?: ChatType | null;
+
+  /**
+   * Message body attachments
+   */
+  attachments?: Array<Attachment> | null;
+
+  /**
+   * User that sent this message. Can be null if message has been posted on behalf of a channel
+   */
+  sender?: IUser | null;
+
+  /**
+   * Message recipient. Could be user or chat
+   */
+  recipient: IMessageRecipient;
+
+  /**
+   * Unix-time when message was created
    */
   timestamp: number;
 
   /**
-   * Send message to the chat where message was edited
+   * Forwarder or replied message
+   */
+  link?: ILink | null;
+
+  /**
+   * Body of created message. Text + attachments. Could be null if message contains only forwarded message
+   */
+  body: IMessageBody;
+
+  /**
+   * Is message sent to chat?
+   */
+  isChat: boolean;
+
+  /**
+   * Is message sent to dialog?
+   */
+  isDialog: boolean;
+
+  /**
+   * Is message sent to channel?
+   */
+  isChannel: boolean;
+
+  /**
+   * Message staistics. Available only for channels in GET:/messages context
+   */
+  stat?: IMessageStat | null;
+
+  /**
+   * Send message to the chat where message was created
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
 
   /**
-   * Reply to the edited message
+   * Reply to the created message
    */
   reply(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  /**
+   * Do message have selected attachments?
+   */
+  hasAttachments(type?: AttachmentType): boolean;
+
+  /**
+   * Get attachments with pointed type
+   */
+  getAttachments(type?: AttachmentType): Array<Attachment>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
+
+  /**
+   * Send message to the current chat/dialog/channel
+   */
+  send(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  /**
+   * Reply to the sent message
+   */
+  reply(text: string, params?: IMessagesSendParams): Promise<void>;
+
+  /**
+   * Forward the sent message
+   */
+  forward(text: string, params?: IMessagesSendParams): Promise<void>;
 }
 
 export interface IMessageRemovedContext {
@@ -785,6 +1027,8 @@ export interface IMessageRemovedContext {
    * Timestamp
    */
   timestamp: number;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IUserAddedContext {
@@ -812,6 +1056,8 @@ export interface IUserAddedContext {
    * Send message to the chat where user was added
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IUserRemovedContext {
@@ -839,6 +1085,8 @@ export interface IUserRemovedContext {
    * Send message to the chat where user was removed
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IBotStartedContext {
@@ -861,6 +1109,8 @@ export interface IBotStartedContext {
    * Send message to the user who pressed the "Start" button
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IBotAddedContext {
@@ -883,6 +1133,8 @@ export interface IBotAddedContext {
    * Send message to the chat where bot was added
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export interface IBotRemovedContext {
@@ -900,6 +1152,8 @@ export interface IBotRemovedContext {
    * Timestamp
    */
   timestamp: number;
+
+  is(types: UpdateType | Array<UpdateType>): boolean;
 }
 
 export type AttachmentType = "audio" | "video" | "file"

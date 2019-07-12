@@ -15,26 +15,32 @@ import {
   IMessageBody,
   ChatType,
   AttachmentType,
+  IMessageStat,
 } from "../../typings/interfaces";
+import { ILink } from "../../typings/responses";
 
 declare class MessageCreatedContext extends Context {
   public id: string;
 
-  public text: string;
+  public text?: string | null;
 
   public senderId: number;
 
-  public chatId: number | null;
+  public chatId?: number | null;
 
-  public chatType: ChatType | null;
+  public chatType?: ChatType | null;
 
-  public attachments: Array<Attachment> | null;
+  public attachments?: Array<Attachment> | null;
 
-  public sender: IUser;
+  public sender?: IUser | null;
 
   public recipient: IMessageRecipient;
 
   public timestamp: number;
+
+  public link?: ILink | null;
+
+  public stat?: IMessageStat | null;
 
   public body: IMessageBody;
 

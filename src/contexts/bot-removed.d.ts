@@ -13,15 +13,13 @@ import { IUser } from "../../typings/interfaces";
 declare class BotRemovedContext extends Context {
   public chatId: number;
 
-  public userId: IUser;
+  public user: IUser;
 
   public timestamp: number;
 
   constructor(tamtam: TamTam, payload: IBotRemovedContext);
 
   public is(types: UpdateType | Array<UpdateType>): boolean;
-
-  public send(text: string, params?: IMessagesSendParams): Promise<void>;
 }
 
 export = BotRemovedContext;

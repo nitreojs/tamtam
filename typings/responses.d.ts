@@ -163,9 +163,9 @@ export interface ILink {
   type: LinkType;
 
   /**
-   * User sent this message
+   * User sent this message. Can be `null` if message has been posted on behalf of a channel
    */
-  sender: IUser;
+  sender?: IUser | null;
 
   /**
    * Chat where message was originally posted

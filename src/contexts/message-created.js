@@ -1,6 +1,16 @@
 let { inspect } = require('util');
 
 let Context = require('./context');
+let Attachments = require('../attachments');
+
+let attachments = {
+  sticker: Attachments.StickerAttachment,
+  contact: Attachments.ContactAttachment,
+  file: Attachments.FileAttachment,
+  image: Attachments.ImageAttachment,
+  location: Attachments.LocationAttachment,
+  video: Attachments.VideoAttachment,
+};
 
 class MessageCreatedContext extends Context {
   constructor(tamtam, payload) {
@@ -18,7 +28,7 @@ class MessageCreatedContext extends Context {
   }
 
   get senderId() {
-    return this.sender.userId;
+    return this.sender.user_id;
   }
 
   get chatId() {
@@ -52,9 +62,9 @@ class MessageCreatedContext extends Context {
     let { recipient } = this.payload.message;
 
     let result = {
-      chatId: recipient.chat_id,
+      chatId: recipient.chat_id || null,
       chatType: recipient.chat_type,
-      userId: recipient.user_id,
+      userId: recipient.user_id || null,
     };
 
     return result;
@@ -65,6 +75,14 @@ class MessageCreatedContext extends Context {
   }
 
   get body() {
+    let { body } = this.payload.message;
+
+    if (body.attachments) {
+      body.attachments = body.attachments.map(
+        e => (attachments[e.type] ? new attachments[e.type](e) : e)
+      );
+    }
+
     return this.payload.message.body;
   }
 
@@ -129,16 +147,15 @@ class MessageCreatedContext extends Context {
 
   [inspect.custom](depth, options) {
     let { name } = this.constructor;
-    let { message } = this.payload;
 
     let payloadToInspect = {
-      text: message.body.text,
-      senderId: message.sender.userId,
-      attachments: message.body.attachments,
-      sender: message.sender,
-      recipient: message.recipient,
-      body: message.body,
-      timestamp: message.timestamp,
+      text: this.text,
+      senderId: this.senderId,
+      attachments: this.attachments,
+      sender: this.sender,
+      recipient: this.recipient,
+      body: this.body,
+      timestamp: this.timestamp,
     };
 
     let payload = inspect(payloadToInspect, { ...options, compact: false });

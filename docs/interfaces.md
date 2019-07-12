@@ -27,11 +27,11 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IPhoto
 
-| Key    | Required | Type                        |
-| ------ | -------- | --------------------------- |
-| url    | false    | string                      |
-| token  | false    | string                      |
-| photos | false    | [IPhotoToken](#IPhotoToken) |
+| Key   | Required | Type   |
+| ----- | -------- | ------ |
+| url   | true     | string |
+| token | true     | string |
+| id    | true     | number |
 
 ## IPhotoToken
 
@@ -77,12 +77,13 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IAttachmentContactPayload
 
-| Key       | Required | Type   |
-| --------- | -------- | ------ |
-| name      | false    | string |
-| contactId | false    | number |
-| vcfInfo   | false    | string |
-| vcfPhone  | false    | string |
+| Key       | Required | Type            |
+| --------- | -------- | --------------- |
+| name      | false    | string          |
+| contactId | false    | number          |
+| vcfInfo   | false    | string          |
+| vcfPhone  | false    | string          |
+| tamInfo   | false    | [IUser](#IUser) |
 
 ## IAttachmentFile
 
@@ -95,9 +96,10 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
-| fileId   | true     | number |
+| id       | true     | number |
 | size     | true     | number |
 | filename | true     | string |
+| url      | true     | string |
 | token    | true     | string |
 
 ## IAttachmentImage
@@ -129,9 +131,12 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## IAttachmentStickerPayload
 
-| Key  | Required | Type   |
-| ---- | -------- | ------ |
-| code | true     | string |
+| Key    | Required | Type   |
+| ------ | -------- | ------ |
+| code   | true     | string |
+| url    | true     | string |
+| width  | true     | string |
+| height | true     | string |
 
 ## IAttachmentVideo
 
@@ -280,7 +285,7 @@ This object can contain any *string* key with *number* value.
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
-| id   | true     | number |
+| id       | true     | number |
 | name     | true     | string |
 | username | false    | string |
 

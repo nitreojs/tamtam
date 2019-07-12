@@ -10,6 +10,14 @@ import {
 } from "../../typings/params";
 
 import { IMessagesAnswerCallbackResponse } from "../../typings/responses";
+import {
+  Attachment,
+  ChatType,
+  IUser,
+  IMessageRecipient,
+  IMessageBody,
+  AttachmentType,
+} from "../../typings/interfaces";
 
 declare class MessageCallbackContext extends Context {
   public callback: ICallback;
