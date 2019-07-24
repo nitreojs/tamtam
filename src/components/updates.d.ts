@@ -17,7 +17,7 @@ import { ITamTamParams, UpdateType } from "../../typings/params";
 import { Middleware, MiddlewareReturn, NextMiddleware } from "middleware-io";
 import { Response, Request } from "express";
 
-type Handler<T = Context> = (context: T, next: NextMiddleware) => any;
+type Handler<T> = (context: T, next: NextMiddleware) => any;
 type WebhookCallback = (req: Request, res: Response, next: NextMiddleware) => Promise<MiddlewareReturn>;
 
 /**
@@ -34,19 +34,29 @@ declare class Updates {
   public getWebhookCallback(): WebhookCallback;
 
   /**
+   * Listen text
+   */
+  public hear(
+    conditions: Array<string | RegExp | Handler<IMessageCreatedContext>>,
+    handler: Handler<IMessageCreatedContext>,
+  ): this;
+
+  /**
+   * A handler that is called when handlers are not found
+   */
+  public setHearFallbackHandler(
+    handler: Handler<IMessageCreatedContext>,
+  ): this;
+
+  /**
    * Add middleware
    */
-  public use(...middlewares: Array<Handler>): this;
+  public use(...middlewares: Array<Handler<Context>>): this;
 
   /**
    * Start polling
    */
   public startPolling(): Promise<void>;
-
-  /**
-   * A handler that is called when handlers are not found
-   */
-  public setHearFallbackHandler(handler: Handler): this;
 
   /**
    * Subscribe to events
@@ -71,7 +81,7 @@ declare class Updates {
 
   public on(events: "chat_title_changed", handler: Handler<IChatTitleChangedContext>): this;
 
-  public on(events: Array<UpdateType> | UpdateType, handler: Handler): this;
+  public on(events: Array<UpdateType> | UpdateType, handler: Handler<Context>): this;
 
   public stopPolling(): this;
 }

@@ -50,6 +50,8 @@ declare class MessageCreatedContext extends Context {
 
   public isChannel: boolean;
 
+  public match?: RegExpMatchArray | null;
+
   constructor(tamtam: TamTam, payload: IMessageCreatedContext);
 
   public hasAttachments(type?: AttachmentType): boolean;

@@ -17,6 +17,54 @@ let contexts = {
   chat_title_changed: Contexts.ChatTitleChanged,
 };
 
+let splitPath = (path) => (
+	path.replace(/\[([^[\]]*)\]/g, '.$1.')
+		.split('.')
+		.filter(Boolean)
+);
+
+let unifyCondition = (condition) => {
+	if (typeof condition === 'function') {
+		return condition;
+	}
+
+	if (condition instanceof RegExp) {
+		return text => (
+			condition.test(text)
+		);
+	}
+
+	if (Array.isArray(condition)) {
+		let arrayConditions = condition.map(unifyCondition);
+
+		return value => (
+			Array.isArray(value)
+				? arrayConditions.every(cond => (
+					value.some(val => cond(val))
+				))
+				: arrayConditions.some(cond => (
+					cond(value)
+				))
+		);
+	}
+
+	return value => value === condition;
+};
+
+let getObjectValue = (source, selectors) => {
+	let link = source;
+
+	for (let selector of selectors) {
+		if (!link[selector]) {
+			return undefined;
+		}
+
+		link = link[selector];
+	}
+
+	return link;
+};
+
 class Updates {
   constructor(tamtam) {
     this.tamtam = tamtam;
@@ -43,6 +91,104 @@ class Updates {
       return next();
     };
   }
+
+  hear(rawConditions, handler) {
+		if (!Array.isArray(rawConditions)) {
+			rawConditions = [rawConditions];
+		}
+
+		let hasConditions = rawConditions.every(Boolean);
+
+		if (!hasConditions) {
+			throw new Error('Condition should be not empty');
+		}
+
+		if (typeof handler !== 'function') {
+			throw new TypeError('Handler must be a function');
+    }
+    
+    if (!this.events.includes('message_created')) {
+      this.events.push('message_created');
+    }
+
+		let textCondition = false;
+		let functionCondition = false;
+		let conditions = rawConditions.map((condition) => {
+			if (typeof condition === 'object' && !(condition instanceof RegExp)) {
+				functionCondition = true;
+
+        let entries = Object.entries(condition)
+          .map(([path, value]) => (
+            [
+              splitPath(path),
+              unifyCondition(value),
+            ]
+          ));
+
+				return (text, context) => (
+					entries.every(
+            ([selectors, callback]) => {
+              let value = getObjectValue(context, selectors);
+
+              return callback(value, context);
+            }
+          )
+				);
+			}
+
+			if (typeof condition === 'function') {
+				functionCondition = true;
+
+				return condition;
+			}
+
+			textCondition = true;
+
+			if (condition instanceof RegExp) {
+				return (text, context) => {
+					let passed = condition.test(text);
+
+					if (passed) {
+						context.match = text.match(condition);
+					}
+
+					return passed;
+				};
+			}
+
+			condition = String(condition);
+
+			return text => text === condition;
+		});
+
+		let needText = textCondition === true && functionCondition === false;
+
+		this.hearStack.push((context, next) => {
+			let { text } = context;
+
+			if (needText && text === null) {
+				return next();
+			}
+
+			let hasSome = conditions.some(condition => (
+				condition(text, context)
+			));
+
+			return hasSome
+				? handler(context, next)
+				: next();
+		});
+
+		this.reloadMiddleware();
+
+		return this;
+  }
+  
+  setHearFallbackHandler(handler) {
+		this.hearFallbackHandler = handler;
+
+		return this;
+	}
 
   use(...middlewares) {
     middlewares.forEach((middleware) => {
@@ -111,12 +257,6 @@ class Updates {
     });
   }
 
-  setHearFallbackHandler(handler) {
-    this.hearFallbackHandler = handler;
-
-    return this;
-  }
-
   async pollingHandler(update) {
     let { update_type: type, ...payload } = update;
 
@@ -133,7 +273,7 @@ class Updates {
   }
 
   reloadMiddleware() {
-    const stack = [...this.stack];
+    let stack = [...this.stack];
 
     if (this.hearStack.length !== 0) {
       stack.push(

@@ -730,6 +730,11 @@ export interface IMessageCreatedContext {
   stat?: IMessageStat | null;
 
   /**
+   * Appends when matching RegExp from `hear` method
+   */
+  match?: RegExpMatchArray | null;
+
+  /**
    * Send message to the chat where message was created
    */
   send(text: string, params?: Params.IMessagesSendParams): Promise<void>;
