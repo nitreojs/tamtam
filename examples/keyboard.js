@@ -4,9 +4,9 @@ let tamtam = new TamTam({
   token: 'CO-q7O0h33GT1FkCDyWfMGJi6RtjWIJrLVGB3l7CPR4',
 });
 
-tamtam.updates.on('message_created', async (ctx) => {
-  if (ctx.text === 'keyboard') {
-    await ctx.send('Here is your keyboard!', {
+tamtam.updates.on('message_created', async (context) => {
+  if (context.text === 'keyboard') {
+    await context.send('Here is your keyboard!', {
       attachments: Keyboard.keyboard([
         [
           Keyboard.callbackButton({

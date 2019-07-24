@@ -251,8 +251,7 @@ class Updates {
       try {
         await this.pollingHandler(update);
       } catch (e) {
-        // eslint-disable-next-line no-console
-        console.error('Handle polling error:', e);
+        debug('Handle polling error:', e);
       }
     });
   }

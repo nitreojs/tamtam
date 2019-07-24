@@ -4,8 +4,8 @@ let tamtam = new TamTam({
   token: 'CO-q7O0h33GT1FkCDyWfMGJi6RtjWIJrLVGB3l7CPR4',
 });
 
-tamtam.updates.on('message_created', async (ctx) => {
-  await ctx.reply('Do you see this? I can reply to your message real quick!');
+tamtam.updates.on('message_created', async (context) => {
+  await context.reply('Do you see this? I can reply to your message real quick!');
 });
 
 /**

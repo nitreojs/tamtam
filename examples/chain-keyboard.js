@@ -6,9 +6,9 @@ let tamtam = new TamTam({
 
 let chainKeyboard = new ChainKeyboard();
 
-tamtam.updates.on('message_created', async (ctx) => {
-  if (ctx.text === 'keyboard') {
-    await ctx.send('Here is your keyboard!', {
+tamtam.updates.on('message_created', async (context) => {
+  if (context.text === 'keyboard') {
+    await context.send('Here is your keyboard!', {
       attachments: chainKeyboard
         .callbackButton({
           text: 'Blue (positive) button',
