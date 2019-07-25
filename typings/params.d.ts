@@ -592,7 +592,7 @@ export interface IChatsRemoveMemberParams {
   /**
    * User ID to remove from chat
    */
-  user: IUser;
+  userId: number;
 }
 
 export interface IErrorParams {

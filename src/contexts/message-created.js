@@ -79,7 +79,11 @@ class MessageCreatedContext extends Context {
 
     if (body.attachments) {
       body.attachments = body.attachments.map(
-        e => (attachments[e.type] ? new attachments[e.type](e) : e)
+        (element) => {
+          let Attachment = attachments[element.type];
+
+          return Attachment ? new Attachment(element) : element;
+        }
       );
     }
 
@@ -87,7 +91,7 @@ class MessageCreatedContext extends Context {
   }
 
   get isChat() {
-    return this.recipient.chatType === 'isChat';
+    return this.recipient.chatType === 'chat';
   }
 
   get isDialog() {

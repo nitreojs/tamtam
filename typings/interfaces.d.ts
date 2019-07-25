@@ -5,7 +5,7 @@ import { UpdateType, IMessagesSendParams } from "./params";
 type LinkType = "forward" | "reply";
 type ButtonIntent = "positive" | "negative" | "default";
 
-interface IPhotoToken {
+export interface IPhotoToken {
   [key: string]: IPhotoTokenParams;
 }
 

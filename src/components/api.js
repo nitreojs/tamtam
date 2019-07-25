@@ -28,35 +28,42 @@ class API {
       httpMethod = 'GET',
       apiMethod,
       body = {},
-      query = {},
+      query: {
+        method,
+        ...query
+      } = {},
     } = params;
 
     let url = `https://botapi.tamtam.chat/${apiMethod}`;
 
-    if (apiMethod === 'chats' && 'chat_id' in query) {
-      url += `/${query.chat_id}${query.method ? '/' + query.method : ''}`;
+    if (apiMethod === 'chats' && chat_id !== undefined) {
+      url += `/${query.chat_id}${method ? `/${method}` : ''}`;
     }
 
-    url += `?access_token=${this.tt.token}&${new URLSearchParams(query)}`;
+    url += `?access_token=${this.tt.token}&${new URLSearchParams(query)}&v=${this.tt.version}`;
 
-    debug(url);
+    debug('url', url);
 
-    let response = await (await fetch(url, {
+    let response = await fetch(url, {
       method: httpMethod,
       headers: {
         'Content-Type': 'application/json',
       },
       body: httpMethod !== 'GET' ? body : null,
-    })).json();
+    });
 
-    if (response.code) {
+    let json = await response.json();
+
+    debug(json);
+
+    if (json.code) {
       throw new TamTamError({
-        code: response.code,
-        message: response.message,
+        code: json.code,
+        message: json.message,
       });
     }
 
-    return response;
+    return json;
   }
 
   async call(apiMethod, { query, body, httpMethod }) {

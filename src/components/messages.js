@@ -6,14 +6,21 @@ class Messages {
   get(params = {}) {
     return this.api.request({
       apiMethod: 'messages',
-      body: JSON.stringify(params),
+      query: params,
     });
   }
 
   send(params) {
     let query = {};
+
     if (params.user_id) query.user_id = params.user_id;
     if (params.chat_id) query.chat_id = params.chat_id;
+
+    Object.assign(params, {
+      text: params.text || null,
+      attachments: params.attachments || null,
+      link: params.link || null,
+    });
 
     return this.api.request({
       httpMethod: 'POST',

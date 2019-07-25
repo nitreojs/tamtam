@@ -11,7 +11,7 @@ class Chats {
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-      }
+      },
     });
   }
 
@@ -39,7 +39,7 @@ class Chats {
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-        apiMethod: 'actions',
+        method: 'actions',
       },
       body: JSON.stringify({ action }),
     });
@@ -50,7 +50,7 @@ class Chats {
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-        apiMethod: 'members/me',
+        method: 'members/me',
       },
     });
   }
@@ -61,7 +61,7 @@ class Chats {
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-        apiMethod: 'members/me',
+        method: 'members/me',
       },
     });
   }
@@ -71,19 +71,23 @@ class Chats {
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-        apiMethod: 'members',
+        method: 'members',
       },
       body: JSON.stringify(params),
     });
   }
 
   addMembers({ chatId, userIds }) {
+    if (!Array.isArray(userIds)) {
+      userIds = [userIds];
+    }
+
     return this.api.request({
       httpMethod: 'POST',
       apiMethod: 'chats',
       query: {
         chat_id: chatId,
-        apiMethod: 'members',
+        method: 'members',
       },
       body: JSON.stringify({ user_ids: userIds }),
     });
@@ -96,6 +100,7 @@ class Chats {
       query: {
         chat_id: chatId,
         user_id: userId,
+        method: 'members',
       },
     });
   }
