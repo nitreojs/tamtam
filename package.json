@@ -1,6 +1,6 @@
 {
   "name": "tamtam",
-  "version": "1.0.9-rc.1",
+  "version": "1.0.9-rc.2",
   "description": "Powerful Node.js package which allows you to easily work with TamTam API",
   "main": "src/index.js",
   "scripts": {
