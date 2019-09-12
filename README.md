@@ -8,7 +8,7 @@
 
 # tamtam
 
-tamtam is a powerful Node.js package which allows you
+`tamtam` is a powerful Node.js package which allows you
 to easily work with [TamTam](https://tt.me) [API](https://dev.tamtam.chat)!
 
 ## Installation

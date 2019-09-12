@@ -36,7 +36,7 @@ class API {
 
     let url = `https://botapi.tamtam.chat/${apiMethod}`;
 
-    if (apiMethod === 'chats' && chat_id !== undefined) {
+    if (apiMethod === 'chats' && query.chat_id !== undefined) {
       url += `/${query.chat_id}${method ? `/${method}` : ''}`;
     }
 
