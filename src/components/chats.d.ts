@@ -19,6 +19,7 @@ import {
   IChatsGetMembersResponse,
   IChatsAddMembersResponse,
   IChatsRemoveMemberResponse,
+  IChatsGetAdminsResponse,
 } from "../../typings/responses";
 
 declare class Chats {
@@ -43,6 +44,8 @@ declare class Chats {
   public addMembers(params: IChatsAddMembersParams): Promise<IChatsAddMembersResponse>;
 
   public removeMember(params: IChatsRemoveMemberParams): Promise<IChatsRemoveMemberResponse>;
+
+  public getAdmins(chatId: number): Promise<IChatsGetAdminsResponse>;
 }
 
 export = Chats;

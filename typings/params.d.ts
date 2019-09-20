@@ -18,8 +18,8 @@ type UpdateType = "message_callback" | "message_created" | "message_edited"
   | "user_added" | "user_removed" | "bot_started"
   | "chat_title_changed";
 type ButtonColor = "positive" | "negative" | "default";
-type Action = "typing_on" | "typing_off" | "sending_photo"
-  | "sending_video" | "sending_audio" | "mark_seen";
+type Action = "typing_on" | "sending_photo" | "sending_video"
+  | "sending_audio" | "mark_seen";
 
 interface IPartial {
   [key: string]: any;
@@ -221,8 +221,6 @@ export interface IMessagesEditParams {
 }
 
 export interface IMessagesAnswerCallbackParams {
-  user_id?: number;
-
   /**
    * Fill this if you want to modify current message
    */
@@ -382,9 +380,10 @@ export interface IUserAddedContext {
   user: IUser;
 
   /**
-   * User who was added user to chat
+   * User who was added user to chat.
+   * Can be `null` in case when user joined chat by link
    */
-  inviter_id: number;
+  inviter_id?: number | null;
 
   /**
    * Unix-time when event has occured

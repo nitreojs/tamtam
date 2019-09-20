@@ -64,6 +64,10 @@ Equals to [ISuccess](interfaces.md/#ISuccess).
 
 Equals to [ISuccess](interfaces.md/#ISuccess).
 
+### IChatsGetAdminsResponse
+
+Equals to [IChatsGetMembersResponse](#IChatsGetMembersResponse).
+
 ## Messages responses
 
 ### IMessagesGetResponse

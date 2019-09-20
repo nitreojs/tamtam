@@ -88,6 +88,5 @@ IMessagesAnswerCallbackParams:
 
 | Key          | Required | Type                                            |
 | ------------ | -------- | ----------------------------------------------- |
-| user_id      | false    | number                                          |
 | message      | false    | [IParamsMessage](interfaces.md/#IParamsMessage) |
 | notification | false    | string                                          |

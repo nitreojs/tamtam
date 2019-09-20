@@ -149,10 +149,13 @@ class MessageCallbackContext extends Context {
   }
 
   sendNotification(text) {
-    return this.tamtam.api.messages.answerCallback(this.payload.callback.id, {
-      user_id: this.payload.callback.user.userId,
-      notification: text,
-    });
+    return this.tamtam.api.messages.answerCallback(
+      this.payload.callback.id,
+      {
+        user_id: this.payload.callback.user.userId,
+        notification: text,
+      },
+    );
   }
 
   [inspect.custom](depth, options) {

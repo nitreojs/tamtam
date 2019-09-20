@@ -95,6 +95,12 @@ interface IChat {
    * Chat description
    */
   description?: string | null;
+
+  /**
+   * Another user in conversation.
+   * For `dialog` type chats only
+   */
+  dialog_with_user?: 
 }
 
 interface IChatMember {
@@ -338,4 +344,17 @@ export interface IUploadGetUrlResponse {
    * URL to upload
    */
   url: string;
+}
+
+export interface IChatsGetAdminsResponse {
+  /**
+   * Participants in chat with time of last activity.
+   * Visible only for chat admins
+   */
+  members: Array<IChatMember>;
+
+  /**
+   * Pointer to the next data page
+   */
+  marker?: number | null;
 }

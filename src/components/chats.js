@@ -104,6 +104,17 @@ class Chats {
       },
     });
   }
+
+  getAdmins(chatId) {
+    return this.api.request({
+      httpMethod: 'GET',
+      apiMethod: 'chats',
+      query: {
+        chat_id: chatId,
+        method: 'members/admins',
+      },
+    });
+  }
 }
 
 module.exports = Chats;

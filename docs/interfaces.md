@@ -41,7 +41,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 ## Action
 
-**Enum**: `typing_on`, `typing_off`, `sending_photo`, `sending_video`,
+**Enum**: `typing_on`, `sending_photo`, `sending_video`,
 `sending_audio` or `mark_seen`
 
 ## Attachment
@@ -280,6 +280,7 @@ This object can contain any *string* key with *number* value.
 | link      | false    | [ILink](#ILink)                         |
 | body      | true     | [IMessageBody](#IMessageBody)           |
 | stat      | false    | [IMessageStat](#IMessageStat)           |
+| url       | false    | string                                  |
 
 ## IUser
 
@@ -406,7 +407,7 @@ This object can contain any *string* key with *number* value.
 | timestamp   | true     | number          |
 | chat_id     | true     | number          |
 | user        | true     | [IUser](#IUser) |
-| inviter_id  | true     | number          |
+| inviter_id  | false    | number          |
 
 ## IUpdateUserRemoved
 

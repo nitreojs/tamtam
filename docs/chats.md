@@ -101,3 +101,11 @@ Removes member from chat. Additional permissions may require
 ```js
 tamtam.api.chats.removeMember(chatId: number, userId: number); // => IChatsRemoveMemberResponse
 ```
+
+### getAdmins
+
+Returns all chat administrators. Bot must be adminstrator in requested chat.
+
+```js
+tamtam.api.chats.getAdmins(chatId: number); // => IChatsGetAdminsResponse
+```

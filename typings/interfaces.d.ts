@@ -456,9 +456,10 @@ interface IUpdateUserRemoved {
   user_id: number;
 
   /**
-   * Administrator who removed user from chat
+   * Administrator who removed user from chat.
+   * Can be `null` in case when user left chat
    */
-  admin_id: number;
+  admin_id?: number | null;
 }
 
 interface IUpdateBotStarted {
@@ -623,9 +624,10 @@ export interface ISubscription {
 
 export interface IMessage {
   /**
-   * User that sent this message. Can be null if message has been posted on behalf of a channel
+   * User who sent this message.
+   * Can be `null` if message has been posted on behalf of a channel
    */
-  sender?: IUser;
+  sender?: IUser | null;
 
   /**
    * Message recipient. Could be user or chat
@@ -643,14 +645,22 @@ export interface IMessage {
   link?: ILink | null;
 
   /**
-   * Body of created message. Text + attachments. Could be null if message contains only forwarded message
+   * Body of created message.
+   * Text + attachments. Could be `null` if message contains only forwarded message
    */
-  body: IMessageBody;
+  body?: IMessageBody | null;
 
   /**
-   * Message staistics. Available only for channels in GET:/messages context
+   * Message staistics.
+   * Available only for channels in GET:/messages context
    */
   stat?: IMessageStat | null;
+
+  /**
+   * Message public URL.
+   * Can be `null` for dialogs or non-public chats/channels
+   */
+  url?: string | null;
 }
 
 export interface IMessageCreatedContext {
