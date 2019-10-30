@@ -1,7 +1,7 @@
 import API from "./api";
 import { IUploadGetUrlResponse } from "../../typings/responses";
 
-type UploadType = "photo" | "video" | "audio" | "file";
+type UploadType = "image" | "video" | "audio" | "file";
 
 export default class Upload {
   private api: API;

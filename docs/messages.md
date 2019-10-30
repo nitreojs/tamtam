@@ -38,14 +38,15 @@ tamtam.api.messages.send(params: IMessagesSendParams); // => IMessagesSendRespon
 
 IMessagesSendParams:
 
-| Key         | Required | Type                                            |
-| ----------- | -------- | ----------------------------------------------- |
-| text        | false    | string                                          |
-| attachments | false    | Array\<[Attachment](interfaces.md/#Attachment)> |
-| link        | false    | ILink                                           |
-| user_id     | false    | number                                          |
-| chat_id     | false    | number                                          |
-| notify      | false    | boolean                                         |
+| Key                  | Required | Type                                            |
+| -------------------- | -------- | ----------------------------------------------- |
+| text                 | false    | string                                          |
+| attachments          | false    | Array\<[Attachment](interfaces.md/#Attachment)> |
+| link                 | false    | ILink                                           |
+| user_id              | false    | number                                          |
+| chat_id              | false    | number                                          |
+| notify               | false    | boolean                                         |
+| disable_link_preview | false    | boolean                                         |
 
 ### edit
 

@@ -107,7 +107,11 @@ class MessageCreatedContext extends Context {
   }
 
   hasAttachments(type = null) {
-    if (type === null) return this.attachments.length > 0;
+    if (this.attachments === null) return null;
+
+    if (type === null) {
+      return this.attachments.length > 0;
+    }
 
     return this.attachments.some(attachment => attachment.type === type);
   }

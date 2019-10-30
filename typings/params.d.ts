@@ -19,7 +19,7 @@ type UpdateType = "message_callback" | "message_created" | "message_edited"
   | "chat_title_changed";
 type ButtonColor = "positive" | "negative" | "default";
 type Action = "typing_on" | "sending_photo" | "sending_video"
-  | "sending_audio" | "mark_seen";
+  | "sending_audio" | "sending_file" | "mark_seen";
 
 interface IPartial {
   [key: string]: any;
@@ -183,9 +183,14 @@ export interface IMessagesSendParams {
   chat_id?: number;
 
   /**
-   * If false, chat participants wouldn"t be notified, default: true
+   * If `false`, chat participants wouldn"t be notified, default: true
    */
   notify?: boolean;
+
+  /**
+   * If `true`, server will generate media preview for links in text
+   */
+  disable_link_preview?: boolean;
 }
 
 export interface IMessagesEditParams {

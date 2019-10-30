@@ -42,7 +42,7 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 ## Action
 
 **Enum**: `typing_on`, `sending_photo`, `sending_video`,
-`sending_audio` or `mark_seen`
+`sending_audio`, `sending_file` or `mark_seen`
 
 ## Attachment
 
@@ -96,7 +96,6 @@ Here you can find **interfaces** or **types** such as `Action` or `UpdateType`.
 
 | Key      | Required | Type   |
 | -------- | -------- | ------ |
-| id       | true     | number |
 | size     | true     | number |
 | filename | true     | string |
 | url      | true     | string |
@@ -315,7 +314,7 @@ This object can contain any *string* key with *number* value.
 
 ## UploadType
 
-**Enum**: `photo`, `video`, `audio` or `file`
+**Enum**: `image`, `video`, `audio` or `file`
 
 ## ISubscription
 

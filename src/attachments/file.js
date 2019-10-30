@@ -26,10 +26,6 @@ class FileAttachment extends Attachment {
     return this.payload.token;
   }
 
-  get id() {
-    return this.payload.fileId;
-  }
-
   get filename() {
     return this.payload.filename;
   }
@@ -46,7 +42,6 @@ class FileAttachment extends Attachment {
     let { name } = this.constructor;
 
     let payloadToInspect = {
-      id: this.id,
       token: this.token,
       url: this.url,
       type: this.type,
